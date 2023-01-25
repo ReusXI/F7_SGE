@@ -1,0 +1,18 @@
+{
+  "cwd": "C:\\xampp\\php\\www\\PHP",
+  "type": [
+    "web"
+  ],
+  "name": "SQL Test",
+  "framework": "core",
+  "template": "tabs",
+  "bundler": false,
+  "theming": {
+    "customColor": true,
+    "color": "#008000",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false
+}
