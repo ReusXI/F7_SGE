@@ -24,8 +24,6 @@
         font-size: 13px;
     }
 
-    .table-responsive {}
-
     .table-wrapper {
         background: #fff;
         padding: 20px 25px;
@@ -388,6 +386,136 @@
                             <td>asfasfsafasfsa</td>
                             <td>afasfasfasfasfas</td>
                             <td>asfasfasfasfasfas</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
+                            <td>ddddddddddddd</td>
                             <td><a href="#editEmployeeModal" onclick="mod('<%=id%>', '<%=Usuario%>', '<%=Clave%>', '<%=Rol%>', '<%=Estado%>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                                 <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<%= id%>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                             </td>

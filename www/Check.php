@@ -3,14 +3,14 @@ $Usser = $_REQUEST['username'];
 $Pass = $_REQUEST['password'];
 
 include_once 'conexion.php';
-$sql_leer = 'Select * from usuarios';
+$sql_leer = 'Select * from users';
 $gsent = $pdo->prepare($sql_leer);
 $gsent->execute();
 $resultado = $gsent->fetchAll();
 foreach ($resultado as $dato) :
-    if(strtoupper($Usser) == strtoupper($dato['Usuario']) && strtoupper($Pass) == strtoupper($dato['Password'])){
-        $_SESSION['User'] = $dato['Usuario'];
-        $_SESSION['Password'] = $dato['Password'];
+    if(strtoupper($Usser) == strtoupper($dato['Uss']) && strtoupper($Pass) == strtoupper($dato['Pass'])){
+        $_SESSION['User'] = $dato['Uss'];
+        $_SESSION['Password'] = $dato['Pass'];
         break;
     }
 endforeach;
