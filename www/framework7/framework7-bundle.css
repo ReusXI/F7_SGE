@@ -838,7 +838,6 @@ html.device-full-viewport body {
   height: 100%;
   position: relative;
   z-index: 1;
-  padding-top: calc(var(--f7-page-navbar-offset, 0px) + var(--f7-page-toolbar-top-offset, 0px) + var(--f7-page-subnavbar-offset, 0px) + var(--f7-page-searchbar-offset, 0px) + var(--f7-page-content-extra-padding-top, 0px));
   padding-bottom: calc(var(--f7-page-toolbar-bottom-offset, 0px) + var(--f7-safe-area-bottom) + var(--f7-page-content-extra-padding-bottom, 0px));
 }
 .page-transitioning,
@@ -2035,21 +2034,9 @@ html.device-full-viewport body {
 .navbar-no-title-large-transition .title-large-text {
   transition-duration: 0ms;
 }
-.navbar ~ *,
-.navbars ~ * {
-  --f7-page-navbar-offset: calc(var(--f7-navbar-height) + var(--f7-safe-area-top));
-}
-.navbar ~ * .page-with-navbar-large,
-.navbar ~ .page-with-navbar-large,
-.navbars ~ * .page-with-navbar-large,
-.navbars ~ .page-with-navbar-large,
-.page-with-navbar-large .navbar ~ * {
-  --f7-page-navbar-offset: calc(var(--f7-navbar-height) + var(--f7-navbar-large-title-height) + var(--f7-safe-area-top));
-}
-.page.no-navbar,
-.page.no-navbar .navbar ~ * {
-  --f7-page-navbar-offset: var(--f7-safe-area-top);
-}
+
+
+
 .ios {
   --f7-navbarLeftTextOffset: calc(4px + 12px + var(--f7-navbar-inner-padding-left));
   --f7-navbarTitleLargeOffset: var(--f7-navbar-large-title-padding-left);
@@ -15259,10 +15246,7 @@ label.item-radio.disabled,
   bottom: 0;
   position: fixed;
 }
-.ptr-with-navbar-large-transparent .ptr-preloader,
-.ptr-with-navbar-transparent .ptr-preloader {
-  top: calc(-1 * var(--f7-page-navbar-offset, 0px) + var(--f7-safe-area-top));
-}
+
 .ios .ptr-preloader {
   margin-bottom: calc(-1 * var(--f7-ptr-size));
   width: 100%;
