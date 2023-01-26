@@ -1,5 +1,6 @@
 <!doctype html>
 <html class="no-js" lang="es">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -360,44 +361,81 @@
             <div class="table-wrapper">
                 <div class="table-title">
                     <div class="row">
-                        <div class="col-sm-6">
-                            <h2>Administrar <b>Usuarios</b></h2>
+                        <div class="col-sm-6" style="width: 400px;">
+                            <h2>Administrar <b>Incidentes</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Usuario</span></a>
+                            <form style="width: 600px; padding-right: 0px; display:inline-block">
+                                <input type="date" class="form-control" name="fecha_inicio" style="width: 33%; display:inline-block;">
+                                <span> Hasta </span>
+                                <input type="date" name="fecha_fin" class="form-control" style="width: 33%; display:inline-block;">
+                                <button type="button" class="btn btn-success" name="Todo" onclick="window.location = 'Eventos.php';" value="Todo">Todo</button>
+                                <button class="btn btn-success" name="buscar" style="display: inline-block;" value="buscar">Buscar</button>
+                                
+                            </form>
                             <!--    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                                 -->
                         </div>
+                        <a href="#addEmployeeModal" class="btn btn-success" style="margin-left: 50px;" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Usuario</span></a>
                     </div>
                 </div>
                 <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                     <thead class="table-dark">
                         <tr class="table-dark" s>
-                            <th data-field="ID">ID</th>
-                            <th data-field="Usuario" data-editable="false">Usuario</th>
-                            <th data-field="Contraseña" data-editable="false">Contraseña</th>
-                            <th data-field="Rol" data-editable="false">Rol</th>
-                            <th data-field="Estado" data-editable="false">Estado</th>
+                            <th data-field="Tipo Institucion" data-editable="false">Tipo Institucion</th>
+                            <th data-field="Codigo Institucion" data-editable="false">Codigo Institucion</th>
+                            <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
+                            <th data-field="Asunto" data-editable="false">Asunto</th>
+                            <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
+                            <th data-field="Fecha de Deteccion" data-editable="false">Fecha de Deteccion</th>
+                            <th data-field="Descripcion" data-editable="false">Descripcion</th>
+                            <th data-field="Recursos Tecnologicos Afectados" data-editable="false">Recursos Tecnologicos Afectados</th>
+                            <th data-field="Codigo de Clasificacion(Nivel I)" data-editable="false">Codigo de Clasificacion(Nivel I)</th>
+                            <th data-field="Codigo de Clasificacion(Nivel II)" data-editable="false">Codigo de Clasificacion(Nivel II)</th>
+                            <th data-field="Impacto Economico Estimado" data-editable="false">Impacto Economico Estimado</th>
+                            <th data-field="Daño Reputacional" data-editable="false">Daño Reputacional</th>
+                            <th data-field="Afectó Procesos Criticos" data-editable="false">Afectó Procesos Criticos</th>
+                            <th data-field="Tiempo de Interrupcion" data-editable="false">Tiempo de Interrupcion</th>
+                            <th data-field="Tiempo de Resolucion del Incidente" data-editable="false">Tiempo de Resolucion del Incidente</th>
+                            <th data-field="Usuario">Usuario</th>
+                            <th data-field="Fecha de Registro" data-editable="false">Fecha de Registro</th>
+                            
                             <th data-field="Accion" data-editable="false">Accion</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php
                         include_once 'conexion.php';
-                        $sql_leer = 'select * from users ORDER BY id ASC;';
+                        $sql_leer = "SELECT * FROM evento ORDER BY codigo_incidente DESC;";
+                        if(isset($_GET['fecha_inicio']) == "AFASFAS"){
+                            $sql_leer = "SELECT * FROM evento WHERE f_incidente BETWEEN '". $_GET['fecha_inicio'] ."' AND '". $_GET['fecha_fin'] ."' ORDER BY codigo_incidente DESC;"; 
+                        }
+                        
                         $gsent = $pdo->prepare($sql_leer);
                         $gsent->execute();
                         $resultado = $gsent->fetchAll();
                         foreach ($resultado as $dato) :
                         ?>
                             <tr>
-                                <td><?= $dato['id']; ?></td>
-                                <td><?= $dato['Uss']; ?></td>
-                                <td><?= $dato['Pass']; ?></td>
-                                <td><?= $dato['rol']; ?></td>
-                                <td><?= $dato['Estado']; ?></td>
-                                <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['id']; ?>', '<?= $dato['Uss']; ?>', '<?= $dato['Pass']; ?>', '<?= $dato['rol']; ?>', '<?= $dato['Estado']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<?= $dato['id']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                            <td><?= $dato['t_institucion']; ?></td>
+                                <td><?= $dato['c_institucion']; ?></td>
+                                <td><?= $dato['codigo_incidente']; ?></td>
+                                <td><?= $dato['asunto']; ?></td>
+                                <td><?= $dato['f_incidente']; ?></td>
+                                <td><?= $dato['f_deteccion_incidente']; ?></td>
+                                <td><?= $dato['descripcion_incidente']; ?></td>
+                                <td><?= $dato['r_t_afectados']; ?></td>
+                                <td><?= $dato['codigo_clasificacion_1']; ?></td>
+                                <td><?= $dato['codigo_clasificacion_2']; ?></td>
+                                <td><?= $dato['impacto_economico_estimado']; ?></td>
+                                <td><?= $dato['daño_reputacional']; ?></td>
+                                <td><?= $dato['afecto_procesos_criticos']; ?></td>
+                                <td><?= $dato['tiempo_interrupcion']; ?></td>
+                                <td><?= $dato['tiempo_resolucion_incidente']; ?></td>
+                                <td><?= $dato['usuario']; ?></td>
+                                <td><?= $dato['fecha_registro']; ?></td>
+                                <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['codigo_incidente']; ?>', '<?= $dato['codigo_incidente']; ?>', '<?= $dato['codigo_incidente']; ?>', '<?= $dato['codigo_incidente']; ?>', '<?= $dato['codigo_incidente']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<?= $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                 </td>
                             </tr>
                         <?php endforeach ?>
