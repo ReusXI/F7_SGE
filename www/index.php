@@ -32,6 +32,15 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 
+<Script>
+function alertas(){
+  <?php
+    ?>
+alert("<?php echo $sesion ?>");
+  
+}
+</Script>
+
 <body>
   <div id="app">
     <!-- Left panel with cover effect-->
@@ -40,7 +49,7 @@
         <div class="page">
           <div class="navbar">
             <div class="navbar-bg"></div>
-            <div onclick="window.location = 'index.html';" class="navbar-inner">
+            <div onclick="window.location = 'index.php';" class="navbar-inner">
               <div class="title" >INICIO</div>
             </div>
           </div>
@@ -57,6 +66,12 @@
               </div>
             </a>
           </div>
+          <div class="block"><a href="#" onclick="alertas();" id="Users" class="col button button-outline">
+                <div class="item-inner">
+                  <div class="item-title">#########</div>
+                </div>
+              </a>
+            </div>
           </div>
         </div>
       </div>

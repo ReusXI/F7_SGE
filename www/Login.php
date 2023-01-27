@@ -24,7 +24,7 @@ if (isset($_GET['error']) != null) {
   <meta name="theme-color" content="#fff">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
-  <title>SQL Test</title>
+  <title>BO - GS EVENTOS</title>
 
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -94,7 +94,7 @@ if (isset($_GET['error']) != null) {
             </ul>
           </div>
         </form>
-        <div class="block-footer">Prueba de SQL.<br />SQL + PHP</div>
+        <div class="block-footer">SISTEMA DE GESTION DE INCIDENTES<br/>BANCO DE OCCIDENTE S.A</div>
       </div>
     </div>
   </div>
