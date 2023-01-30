@@ -2,6 +2,14 @@
  * @author zhixin wen <wenzhixin2010@gmail.com>
  * extensions: https://github.com/kayalshri/tableExport.jquery.plugin
  */
+const fecha = new Date();
+const year = fecha.getFullYear();
+const month = fecha.getMonth()+1;
+const day = fecha.getDate();
+
+if(month.length <2){
+    month = "0"+month;
+}
 
 (function ($) {
     'use strict';
@@ -26,7 +34,9 @@
         exportDataType: 'basic', // basic, all, selected
         // 'json', 'xml', 'png', 'csv', 'txt', 'sql', 'doc', 'excel', 'powerpoint', 'pdf'
         exportTypes: ['json', 'xml', 'csv', 'txt', 'sql', 'excel'],
-        exportOptions: {}
+        exportOptions: {
+            fileName: "ROPSSCI"+year+month+day
+        }
     });
 
     $.extend($.fn.bootstrapTable.defaults.icons, {

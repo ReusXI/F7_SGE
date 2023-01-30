@@ -54,19 +54,19 @@ alert("<?php echo $sesion ?>");
             </div>
           </div>
           <div class="page-content">
-            <div class="block"><a href="#" onclick="P.src= './pages/Users.php';" id="Users" class="col button button-outline">
+            <div class="block"><a href="#" onclick="P.src= './pages/Users.php';" id="Users" style="background-color: white;" class="col button button-outline">
                 <div class="item-inner">
                   <div class="item-title">Usuarios</div>
                 </div>
               </a>
             </div>
-            <div class="block"><a href="#" onclick="P.src= './pages/Eventos.php';" id="Users" class="col button button-outline">
+            <div class="block"><a href="#" onclick="P.src= './pages/Eventos.php';" id="Users" style="background-color: white;" class="col button button-outline">
               <div class="item-inner">
                 <div class="item-title">Eventos</div>
               </div>
             </a>
           </div>
-          <div class="block"><a href="#" onclick="alertas();" id="Users" class="col button button-outline">
+          <div class="block"><a href="#" onclick="alertas();" id="Users" style="background-color: white;" class="col button button-outline">
                 <div class="item-inner">
                   <div class="item-title">#########</div>
                 </div>

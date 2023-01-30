@@ -1,10 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="es">
 
-<?php 
+<?php
 session_start();
 $sesionrol = $_SESSION['rol'];
 ?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -398,9 +399,10 @@ $sesionrol = $_SESSION['rol'];
                 </div>
                 <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                     <thead class="table-dark">
-                        <tr class="table-dark" s>
+                        <tr class="table-dark">
                             <th data-field="Tipo Institucion" data-editable="false">Tipo Institucion</th>
                             <th data-field="Codigo Institucion" data-editable="false">Codigo Institucion</th>
+                            <th data-field="Tipo Institucion" data-editable="false">Fecha de Reporte de datos</th>
                             <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
                             <th data-field="Asunto" data-editable="false">Asunto</th>
                             <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
@@ -416,7 +418,6 @@ $sesionrol = $_SESSION['rol'];
                             <th data-field="Tiempo de Resolucion del Incidente" data-editable="false">Tiempo de Resolucion del Incidente</th>
                             <th data-field="Usuario">Usuario</th>
                             <th data-field="Fecha de Registro" data-editable="false">Fecha de Registro</th>
-
                             <th data-field="Accion" data-editable="false">Accion</th>
                         </tr>
                     </thead>
@@ -436,6 +437,7 @@ $sesionrol = $_SESSION['rol'];
                             <tr>
                                 <td><?= $dato['t_institucion']; ?></td>
                                 <td><?= $dato['c_institucion']; ?></td>
+                                <td><?= date('Y-m-d') ?></td>
                                 <td><?= $dato['codigo_incidente']; ?></td>
                                 <td><?= $dato['asunto']; ?></td>
                                 <td><?= $dato['f_incidente']; ?></td>
