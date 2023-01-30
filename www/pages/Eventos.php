@@ -669,7 +669,7 @@ $sesionrol = $_SESSION['rol'];
                         </div>
                         <div class="form-group">
                             <label>Daño Reputacional</label>
-                            <select name="daño" id="daño" class="form-control" required>
+                            <select name="dano" id="daño" class="form-control" required>
                                 <?php
                                 include_once 'conexion.php';
                                 $sql_leer = "SELECT * FROM opciones;";
