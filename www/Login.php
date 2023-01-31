@@ -72,7 +72,7 @@ if (isset($_GET['error']) != null) {
                 <div class="item-inner">
                   <div class="item-title item-label">Usuario</div>
                   <div class="item-input-wrap">
-                    <input type="text" name="username" placeholder="Tu Usuario" required/>
+                    <input type="text" name="username" placeholder="Tu Usuario" required />
                   </div>
                 </div>
               </li>
@@ -80,7 +80,7 @@ if (isset($_GET['error']) != null) {
                 <div class="item-inner">
                   <div class="item-title item-label">Contraseña</div>
                   <div class="item-input-wrap">
-                    <input type="password" name="password" placeholder="Tu Contraseña" required/>
+                    <input type="password" name="password" placeholder="Tu Contraseña" required />
                   </div>
                 </div>
               </li>
@@ -94,7 +94,7 @@ if (isset($_GET['error']) != null) {
             </ul>
           </div>
         </form>
-        <div class="block-footer">SISTEMA DE GESTION DE INCIDENTES<br/>BANCO DE OCCIDENTE S.A</div>
+        <div class="block-footer">SISTEMA DE GESTION DE INCIDENTES<br />BANCO DE OCCIDENTE S.A</div>
       </div>
     </div>
   </div>
