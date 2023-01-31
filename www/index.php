@@ -66,9 +66,9 @@ alert("<?php echo $sesion ?>");
               </div>
             </a>
           </div>
-          <div class="block"><a href="#" onclick="alertas();" id="Users" style="background-color: white;" class="col button button-outline">
+          <div class="block"><a href="#" onclick="P.src= './pages/grafico.php';" id="Users" style="background-color: white;" class="col button button-outline">
                 <div class="item-inner">
-                  <div class="item-title">#########</div>
+                  <div class="item-title">Graficos y Estadisticas</div>
                 </div>
               </a>
             </div>

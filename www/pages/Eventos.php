@@ -402,7 +402,7 @@ $sesionrol = $_SESSION['rol'];
                         <tr class="table-dark">
                             <th data-field="Tipo Institucion" data-editable="false">Tipo Institucion</th>
                             <th data-field="Codigo Institucion" data-editable="false">Codigo Institucion</th>
-                            <th data-field="Tipo Institucion" data-editable="false">Fecha de Reporte de datos</th>
+                            <th data-field="Fecha de Reporte de datos" data-editable="false">Fecha de Reporte de datos</th>
                             <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
                             <th data-field="Asunto" data-editable="false">Asunto</th>
                             <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
