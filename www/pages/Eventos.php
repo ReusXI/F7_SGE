@@ -5,6 +5,25 @@
 session_start();
 $sesionrol = $_SESSION['rol'];
 ?>
+<?php
+if (!function_exists('getShortedString')) {
+    function getShortedString($text, $length = null)
+    {
+        $formatedString = ucwords($text);
+
+        if ($length != null) {
+            if (strlen($formatedString) <= $length) {
+                return $formatedString;
+            } else {
+                $y = substr($formatedString, 0, $length) . '...';
+                return $y;
+            }
+        } else {
+            return $formatedString;
+        }
+    }
+}
+?>
 
 <head>
     <meta charset="utf-8">
@@ -383,10 +402,10 @@ $sesionrol = $_SESSION['rol'];
                             <h2>Administrar <b>Incidentes</b></h2>
                         </div>
                         <div class="col-sm-6">
-                            <form style="width: 600px; padding-right: 0px; display:inline-block">
-                                <input type="date" class="form-control" name="fecha_inicio" style="width: 33%; display:inline-block;">
+                            <form id="fecha" style="width: 600px; padding-right: 0px; display:inline-block">
+                                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" style="width: 33%; display:inline-block;">
                                 <span> Hasta </span>
-                                <input type="date" name="fecha_fin" class="form-control" style="width: 33%; display:inline-block;">
+                                <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" style="width: 33%; display:inline-block;">
                                 <button type="button" class="btn btn-success" name="Todo" onclick="window.location = 'Eventos.php';" value="Todo">Todo</button>
                                 <button class="btn btn-success" name="buscar" style="display: inline-block;" value="buscar">Buscar</button>
 
@@ -400,24 +419,19 @@ $sesionrol = $_SESSION['rol'];
                 <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                     <thead class="table-dark">
                         <tr class="table-dark">
-                            <th data-field="Tipo Institucion" data-editable="false">Tipo Institucion</th>
-                            <th data-field="Codigo Institucion" data-editable="false">Codigo Institucion</th>
-                            <th data-field="Fecha de Reporte de datos" data-editable="false">Fecha de Reporte de datos</th>
                             <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
                             <th data-field="Asunto" data-editable="false">Asunto</th>
                             <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
                             <th data-field="Fecha de Deteccion" data-editable="false">Fecha de Deteccion</th>
                             <th data-field="Descripcion" data-editable="false">Descripcion</th>
                             <th data-field="Recursos Tecnologicos Afectados" data-editable="false">Recursos Tecnologicos Afectados</th>
-                            <th data-field="Codigo de Clasificacion(Nivel I)" data-editable="false">Codigo de Clasificacion(Nivel I)</th>
-                            <th data-field="Codigo de Clasificacion(Nivel II)" data-editable="false">Codigo de Clasificacion(Nivel II)</th>
+                            <th data-field="Clasificacion(Nivel I)" data-editable="false">Clasificacion(Nivel I)</th>
+                            <th data-field="Clasificacion(Nivel II)" data-editable="false">Clasificacion(Nivel II)</th>
                             <th data-field="Impacto Economico Estimado" data-editable="false">Impacto Economico Estimado</th>
                             <th data-field="Daño Reputacional" data-editable="false">Daño Reputacional</th>
                             <th data-field="Afectó Procesos Criticos" data-editable="false">Afectó Procesos Criticos</th>
-                            <th data-field="Tiempo de Interrupcion" data-editable="false">Tiempo de Interrupcion</th>
-                            <th data-field="Tiempo de Resolucion del Incidente" data-editable="false">Tiempo de Resolucion del Incidente</th>
-                            <th data-field="Usuario">Usuario</th>
-                            <th data-field="Fecha de Registro" data-editable="false">Fecha de Registro</th>
+                            <th data-field="Tiempo Interrupcion" data-editable="false">Tiempo Interrupcion</th>
+                            <th data-field="Tiempo Resolucion" data-editable="false">Tiempo Resolucion</th>
                             <th data-field="Accion" data-editable="false">Accion</th>
                         </tr>
                     </thead>
@@ -435,15 +449,12 @@ $sesionrol = $_SESSION['rol'];
                         foreach ($resultado as $dato) :
                         ?>
                             <tr>
-                                <td><?= $dato['t_institucion']; ?></td>
-                                <td><?= $dato['c_institucion']; ?></td>
-                                <td><?= date('Y-m-d') ?></td>
                                 <td><?= $dato['codigo_incidente']; ?></td>
                                 <td><?= $dato['asunto']; ?></td>
                                 <td><?= $dato['f_incidente']; ?></td>
                                 <td><?= $dato['f_deteccion_incidente']; ?></td>
-                                <td><?= $dato['descripcion_incidente']; ?></td>
-                                <td><?= $dato['r_t_afectados']; ?></td>
+                                <td><?= getShortedString($dato['descripcion_incidente'], 50); ?></td>
+                                <td><?= getShortedString($dato['r_t_afectados'], 50); ?></td>
                                 <td><?= $dato['codigo_clasificacion_1']; ?></td>
                                 <td><?= $dato['codigo_clasificacion_2']; ?></td>
                                 <td><?= $dato['impacto_economico_estimado']; ?></td>
@@ -451,15 +462,19 @@ $sesionrol = $_SESSION['rol'];
                                 <td><?= $dato['afecto_procesos_criticos']; ?></td>
                                 <td><?= $dato['tiempo_interrupcion']; ?></td>
                                 <td><?= $dato['tiempo_resolucion_incidente']; ?></td>
-                                <td><?= $dato['usuario']; ?></td>
-                                <td><?= $dato['fecha_registro']; ?></td>
                                 <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
                                 '<?= $dato['codigo_incidente']; ?>', '<?= $dato['asunto']; ?>','<?= $dato['f_incidente']; ?>',
                                 '<?= $dato['f_deteccion_incidente']; ?>','<?= $dato['descripcion_incidente']; ?>',
                                 '<?= $dato['r_t_afectados']; ?>','<?= $dato['codigo_clasificacion_1']; ?>','<?= $dato['codigo_clasificacion_2']; ?>',
                                 '<?= $dato['impacto_economico_estimado']; ?>','<?= $dato['daño_reputacional']; ?>','<?= $dato['afecto_procesos_criticos']; ?>',
                                 '<?= $dato['tiempo_interrupcion']; ?>','<?= $dato['tiempo_resolucion_incidente']; ?>','<?= $dato['usuario']; ?>', '<?= $dato['fecha_registro']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
+                                    <a href="#editEmployeeModal1" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
+                                '<?= $dato['codigo_incidente']; ?>', '<?= $dato['asunto']; ?>','<?= $dato['f_incidente']; ?>',
+                                '<?= $dato['f_deteccion_incidente']; ?>','<?= $dato['descripcion_incidente']; ?>',
+                                '<?= $dato['r_t_afectados']; ?>','<?= $dato['codigo_clasificacion_1']; ?>','<?= $dato['codigo_clasificacion_2']; ?>',
+                                '<?= $dato['impacto_economico_estimado']; ?>','<?= $dato['daño_reputacional']; ?>','<?= $dato['afecto_procesos_criticos']; ?>',
+                                '<?= $dato['tiempo_interrupcion']; ?>','<?= $dato['tiempo_resolucion_incidente']; ?>','<?= $dato['usuario']; ?>', '<?= $dato['fecha_registro']; ?>')" class="new" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Vista">insert_chart</i></a>
+                                <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -480,11 +495,11 @@ $sesionrol = $_SESSION['rol'];
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Tipo de Institucion</label>
-                            <input maxlength="2" name="t_institucion" type="text" class="form-control" required>
+                            <input maxlength="2" name="t_institucion" readonly="" type="text" value="IT" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Codigo de Institucion</label>
-                            <input maxlength="2" name="c_institucion" type="text" class="form-control" required>
+                            <input maxlength="2" name="c_institucion" readonly="" type="text" value="03" class="form-control" required>
                         </div>
                         <!-- <div class="form-group">
                             <label>Codigo del Incidente</label>
@@ -520,7 +535,7 @@ $sesionrol = $_SESSION['rol'];
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
+                                    echo '<option value="'. $dato['id'] .'"> ' . $dato['taxonomia'] . ' </option>';
                                 endforeach
                                 ?>
                             </select>
@@ -535,7 +550,7 @@ $sesionrol = $_SESSION['rol'];
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['codigo'] . " </option>";
+                                    echo '<option value="'. $dato['codigo'] .'"> ' . $dato['taxonomia2'] . ' </option>';
                                 endforeach
                                 ?>
                             </select>
@@ -545,41 +560,25 @@ $sesionrol = $_SESSION['rol'];
                             <input name="economico" type="number" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Daño Reputacional</label>
-                            <select name="dano" class="form-control" required>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM opciones;";
-                                $gsent = $pdo->prepare($sql_leer);
-                                $gsent->execute();
-                                $resultado = $gsent->fetchAll();
-                                foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
-                                endforeach
-                                ?>
-                            </select>
+                            <label>Daño Reputacional: </label>
+                            <label style="padding-left: 5px;" class="form-check-label" for="flexRadioDefault1">No</label>
+                            <input name="dano" type="radio" id="rb_1" class="form-check" value="1" checked> 
+                            <label class="form-check-label" for="flexRadioDefault1">Si</label>
+                            <input name="dano" type="radio" id="rb_2" class="form-check" value="0" required>
                         </div>
                         <div class="form-group">
-                            <label>Afecto Procesos Criticos</label>
-                            <select name="procesos" class="form-control" required>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM opciones;";
-                                $gsent = $pdo->prepare($sql_leer);
-                                $gsent->execute();
-                                $resultado = $gsent->fetchAll();
-                                foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
-                                endforeach
-                                ?>
-                            </select>
+                            <label>Afecto Procesos Criticos: </label>
+                            <label style="padding-left: 5px;" class="form-check-label" for="flexRadioDefault1">No</label>
+                            <input name="procesos" type="radio" id="rb_3" class="form-check" value="1" checked> 
+                            <label class="form-check-label" for="flexRadioDefault1">Si</label>
+                            <input name="procesos" type="radio" id="rb_4" class="form-check" value="0" required>
                         </div>
                         <div class="form-group">
-                            <label>Tiempo de Interrupcion</label>
+                            <label>Tiempo de Interrupcion (Horas)</label>
                             <input name="t_interrupcion" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" required>
                         </div>
                         <div class="form-group">
-                            <label>Tiempo de Resolucion del Incidente</label>
+                            <label>Tiempo de Resolucion del Incidente (Horas)</label>
                             <input maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" name="t_resolucion" type="number" class="form-control" required>
                         </div>
                         <input name="inp_guardar" value="45" type="hidden">
@@ -717,6 +716,120 @@ $sesionrol = $_SESSION['rol'];
             </div>
         </div>
     </div>
+    <!-- Edit Modal HTML -->
+    <div id="editEmployeeModal1" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form id="editar">
+                    <div class="modal-header">
+                        <h4 class="modal-title">EDITAR EVENTO</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <label id="Label1" style="padding-left: 5px;" name="Label1">AQUI VA LA FECHA DEL REGISTRO</label>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>Tipo de Institucion</label>
+                            <input id="t_institucion" maxlength="2" name="t_institucion" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Codigo de Institucion</label>
+                            <input id="c_institucion" maxlength="2" name="c_institucion" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Codigo del Incidente</label>
+                            <input id="c_incidente" readonly="" maxlength="50" name="c_incidente" type="text" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Asunto</label>
+                            <textarea id="asunto" maxlength="100" name="asunto" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha del Incidente</label>
+                            <input id="f_incidente" name="f_incidente" type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Fecha de Deteccion del Incidente</label>
+                            <input id="f_deteccion" name="f_deteccion" type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Descripcion del Incidente</label>
+                            <textarea id="descripcion" maxlength="1000" cols="40" rows="10" name="descripcion" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Recursos Tecnologicos Afectados</label>
+                            <textarea cols="40" maxlength="1000" rows="10" id="r_t_afectados" name="r_t_afectados" class="form-control" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label>Codigo de Clasificacion (Nivel I)</label>
+                            <select id="c_clasificacion1" name="c_clasificacion1" class="form-control" required>
+                                <?php
+                                include_once 'conexion.php';
+                                $sql_leer = "SELECT * FROM taxonomia1;";
+                                $gsent = $pdo->prepare($sql_leer);
+                                $gsent->execute();
+                                $resultado = $gsent->fetchAll();
+                                foreach ($resultado as $dato) :
+                                    echo "<option> " . $dato['id'] . " </option>";
+                                endforeach
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Codigo de Clasificacion (Nivel II)</label>
+                            <select id="c_clasificacion2" name="c_clasificacion2" class="form-control" required>
+                                <?php
+                                include_once 'conexion.php';
+                                $sql_leer = "SELECT * FROM taxonomia2 WHERE usuario = '$sesionrol';";
+                                $gsent = $pdo->prepare($sql_leer);
+                                $gsent->execute();
+                                $resultado = $gsent->fetchAll();
+                                foreach ($resultado as $dato) :
+                                    echo "<option> " . $dato['codigo'] . " </option>";
+                                endforeach
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Impacto Economico Estimado</label>
+                            <input name="economico" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="economico" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Daño Reputacional</label>
+                            <select name="dano" id="daño" class="form-control" required>
+                                <?php
+                                include_once 'conexion.php';
+                                $sql_leer = "SELECT * FROM opciones;";
+                                $gsent = $pdo->prepare($sql_leer);
+                                $gsent->execute();
+                                $resultado = $gsent->fetchAll();
+                                foreach ($resultado as $dato) :
+                                    echo "<option> " . $dato['id'] . " </option>";
+                                endforeach
+                                ?>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Afecto Procesos Criticos</label>
+                            <input name="procesos" id="procesos" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Tiempo de Interrupcion</label>
+                            <input name="t_interrupcion" id="t_interrupcion" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Tiempo de Resolucion del Incidente</label>
+                            <input name="t_resolucion" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="t_resolucion" type="number" class="form-control" required>
+                        </div>
+                        <input name="inp_editar" value="45" type="hidden">
+                    </div>
+                    <div class="modal-footer">
+                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+                        <input name="btn_editar" id="btn_editar" type="submit" class="btn btn-info" value="Guardar">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <!-- Delete Modal HTML -->
     <!--  <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
@@ -801,6 +914,12 @@ $sesionrol = $_SESSION['rol'];
             e.preventDefault();
         });
     });
+    $(document).ready(function() {
+        $("#fecha_inicio").on('change', function(e) {
+            eliminar_datos();
+            e.preventDefault();
+        });
+    });
 
     function agregar_datos() {
         var datos = $("#ingresar").serialize();
@@ -834,7 +953,7 @@ $sesionrol = $_SESSION['rol'];
         var datos = $("#eliminar").serialize();
         $.ajax({
             method: "GET",
-            url: "Operaciones.php",
+            url: "Operaciones.php?search=1",
             data: datos,
             success: function(e) {
                 Swal.fire("EXITO!", "Registro Exitoso", "success").then(function() {
@@ -843,6 +962,17 @@ $sesionrol = $_SESSION['rol'];
             }
         });
     }
+    /*function buscar_datos() {
+        var desde = $("#fecha_inicio").val();
+        var hasta = $("#fecha_desde").val();
+        $.ajax({
+            method: "GET",
+            url: "Operaciones.php",
+            data: 'desde='+desde+'&hasta='+hasta,
+        });
+    }*/
+
+    
 </script>
 
 </html>

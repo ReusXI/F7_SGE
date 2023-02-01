@@ -400,22 +400,22 @@ $sesionrol = $_SESSION['rol'];
                 <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                     <thead class="table-dark">
                         <tr class="table-dark">
-                            <th data-field="Tipo Institucion" data-editable="false">Tipo Institucion</th>
-                            <th data-field="Codigo Institucion" data-editable="false">Codigo Institucion</th>
-                            <th data-field="Fecha de Reporte de datos" data-editable="false">Fecha de Reporte de datos</th>
-                            <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
+                            <th data-field="Tipo Institucion" data-editable="false">TI</th>
+                            <th data-field="Codigo Institucion" data-editable="false">CI</th>
+                            <th data-field="Fecha de Reporte de datos" data-editable="false">Fecha</th>
+                            <th data-field="Codigo Incidente" data-editable="false">Codigo</th>
                             <th data-field="Asunto" data-editable="false">Asunto</th>
-                            <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
-                            <th data-field="Fecha de Deteccion" data-editable="false">Fecha de Deteccion</th>
+                            <th data-field="Fecha de Incidente" data-editable="false">Fecha Incidente</th>
+                            <th data-field="Fecha de Deteccion" data-editable="false">Fecha Deteccion</th>
                             <th data-field="Descripcion" data-editable="false">Descripcion</th>
                             <th data-field="Recursos Tecnologicos Afectados" data-editable="false">Recursos Tecnologicos Afectados</th>
-                            <th data-field="Codigo de Clasificacion(Nivel I)" data-editable="false">Codigo de Clasificacion(Nivel I)</th>
-                            <th data-field="Codigo de Clasificacion(Nivel II)" data-editable="false">Codigo de Clasificacion(Nivel II)</th>
-                            <th data-field="Impacto Economico Estimado" data-editable="false">Impacto Economico Estimado</th>
-                            <th data-field="Daño Reputacional" data-editable="false">Daño Reputacional</th>
-                            <th data-field="Afectó Procesos Criticos" data-editable="false">Afectó Procesos Criticos</th>
-                            <th data-field="Tiempo de Interrupcion" data-editable="false">Tiempo de Interrupcion</th>
-                            <th data-field="Tiempo de Resolucion del Incidente" data-editable="false">Tiempo de Resolucion del Incidente</th>
+                            <th data-field="Codigo de Clasificacion(Nivel I)" data-editable="false">Clasificacion(Nivel I)</th>
+                            <th data-field="Codigo de Clasificacion(Nivel II)" data-editable="false">Clasificacion(Nivel II)</th>
+                            <th data-field="Impacto Economico Estimado" data-editable="false">Impacto Economico</th>
+                            <th data-field="Daño Reputacional" data-editable="false">Daño</th>
+                            <th data-field="Afectó Procesos Criticos" data-editable="false">Procesos Criticos</th>
+                            <th data-field="Tiempo de Interrupcion" data-editable="false">Tiempo Interrupcion</th>
+                            <th data-field="Tiempo de Resolucion del Incidente" data-editable="false">Tiempo de Resolucion</th>
                             <th data-field="Usuario">Usuario</th>
                             <th data-field="Fecha de Registro" data-editable="false">Fecha de Registro</th>
                             <th data-field="Accion" data-editable="false">Accion</th>

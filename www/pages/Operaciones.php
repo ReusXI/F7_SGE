@@ -31,4 +31,14 @@ if (isset($_GET['inp_eliminar']) != null) {
         echo "<script>alert('TAREA REALIZADA CON EXITO!')</script>";
     }
 }
+//BUSCAR REGISTRO
+if (isset($_GET['desde']) != null) {
+    include_once 'conexion.php';
+    $sql_leer = "SELECT * FROM evento WHERE f_incidente BETWEEN '" . $_GET['desde'] . "' AND '" . $_GET['hasta'] . "' ORDER BY codigo_incidente DESC;";
+    $gsent = $pdo->prepare($sql_leer);
+    $resultado = $gsent->execute();
+    if ($resultado > 0) {
+        echo "<script>alert('TAREA REALIZADA CON EXITO!')</script>";
+    }
+}
 ?>
