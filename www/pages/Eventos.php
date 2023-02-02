@@ -372,16 +372,16 @@ if (!function_exists('getShortedString')) {
         document.getElementById("t_institucion").value = t_institucion;
         document.getElementById("c_institucion").value = c_institucion;
         document.getElementById("c_incidente").value = codigo_incidente;
-        document.getElementById("asunto").value = asunto;
-        document.getElementById("f_incidente").value = f_incidente;
-        document.getElementById("f_deteccion").value = f_deteccion_incidente;
+        document.getElementById("easunto").value = asunto;
+        document.getElementById("ef_incidente").value = f_incidente;
+        document.getElementById("ef_deteccion").value = f_deteccion_incidente;
         document.getElementById("descripcion").value = descripcion_incidente;
         document.getElementById("r_t_afectados").value = r_t_afectados;
-        document.getElementById("c_clasificacion1").value = codigo_clasificacion_1;
-        document.getElementById("c_clasificacion2").value = codigo_clasificacion_2;
+        document.getElementById("ec_clasificacion1").value = codigo_clasificacion_1;
+        document.getElementById("ec_clasificacion2").value = codigo_clasificacion_2;
         document.getElementById("economico").value = impacto_economico_estimado;
-        document.getElementById("daño").value = daño_reputacional;
-        document.getElementById("procesos").value = afecto_procesos_criticos;
+        document.getElementById("edaño").value = daño_reputacional;
+        document.getElementById("eprocesos").value = afecto_procesos_criticos;
         document.getElementById("t_interrupcion").value = tiempo_interrupcion;
         document.getElementById("t_resolucion").value = tiempo_resolucion_incidente;
         document.querySelector('#Label1').innerText = 'Registrado el: ' + fecha_registro + ' por el Usuario: ' + usuario;
@@ -408,7 +408,6 @@ if (!function_exists('getShortedString')) {
                                 <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" style="width: 33%; display:inline-block;">
                                 <button type="button" class="btn btn-success" name="Todo" onclick="window.location = 'Eventos.php';" value="Todo">Todo</button>
                                 <button class="btn btn-success" name="buscar" style="display: inline-block;" value="buscar">Buscar</button>
-
                             </form>
                             <!--    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
                                 -->
@@ -416,7 +415,7 @@ if (!function_exists('getShortedString')) {
                         <a href="#addEmployeeModal" class="btn btn-success" style="margin-left: 50px;" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Incidente</span></a>
                     </div>
                 </div>
-                <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
                     <thead class="table-dark">
                         <tr class="table-dark">
                             <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
@@ -438,9 +437,9 @@ if (!function_exists('getShortedString')) {
                     <tbody>
                         <?php
                         include_once 'conexion.php';
-                        $sql_leer = "SELECT * FROM evento ORDER BY codigo_incidente DESC;";
-                        if (isset($_GET['fecha_inicio']) == "AFASFAS") {
-                            $sql_leer = "SELECT * FROM evento WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' ORDER BY codigo_incidente DESC;";
+                        $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño_reputacional', C.opcion as 'afecto_procesos_criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
+                        if (isset($_GET['fecha_inicio']) != null) {
+                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño_reputacional', C.opcion as 'afecto_procesos_criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
                         }
 
                         $gsent = $pdo->prepare($sql_leer);
@@ -450,13 +449,13 @@ if (!function_exists('getShortedString')) {
                         ?>
                             <tr>
                                 <td><?= $dato['codigo_incidente']; ?></td>
-                                <td><?= $dato['asunto']; ?></td>
+                                <td><?= getShortedString($dato['asunto'], 50);?></td>
                                 <td><?= $dato['f_incidente']; ?></td>
                                 <td><?= $dato['f_deteccion_incidente']; ?></td>
                                 <td><?= getShortedString($dato['descripcion_incidente'], 50); ?></td>
                                 <td><?= getShortedString($dato['r_t_afectados'], 50); ?></td>
-                                <td><?= $dato['codigo_clasificacion_1']; ?></td>
-                                <td><?= $dato['codigo_clasificacion_2']; ?></td>
+                                <td><?= $dato['taxonomia']; ?></td>
+                                <td><?= $dato['taxonomia2']; ?></td>
                                 <td><?= $dato['impacto_economico_estimado']; ?></td>
                                 <td><?= $dato['daño_reputacional']; ?></td>
                                 <td><?= $dato['afecto_procesos_criticos']; ?></td>
@@ -471,10 +470,10 @@ if (!function_exists('getShortedString')) {
                                     <a href="#editEmployeeModal1" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
                                 '<?= $dato['codigo_incidente']; ?>', '<?= $dato['asunto']; ?>','<?= $dato['f_incidente']; ?>',
                                 '<?= $dato['f_deteccion_incidente']; ?>','<?= $dato['descripcion_incidente']; ?>',
-                                '<?= $dato['r_t_afectados']; ?>','<?= $dato['codigo_clasificacion_1']; ?>','<?= $dato['codigo_clasificacion_2']; ?>',
+                                '<?= $dato['r_t_afectados']; ?>','<?= $dato['taxonomia']; ?>','<?= $dato['taxonomia2']; ?>',
                                 '<?= $dato['impacto_economico_estimado']; ?>','<?= $dato['daño_reputacional']; ?>','<?= $dato['afecto_procesos_criticos']; ?>',
                                 '<?= $dato['tiempo_interrupcion']; ?>','<?= $dato['tiempo_resolucion_incidente']; ?>','<?= $dato['usuario']; ?>', '<?= $dato['fecha_registro']; ?>')" class="new" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Vista">insert_chart</i></a>
-                                <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
+                                    <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
                                 </td>
                             </tr>
                         <?php endforeach ?>
@@ -507,15 +506,15 @@ if (!function_exists('getShortedString')) {
                         </div> -->
                         <div class="form-group">
                             <label>Asunto</label>
-                            <textarea maxlength="100" name="asunto" class="form-control" required></textarea>
+                            <textarea maxlength="100" name="asunto" id="asunto" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Fecha del Incidente</label>
-                            <input name="f_incidente" type="date" class="form-control" required>
+                            <input name="f_incidente" type="date" id="f_incidente" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Fecha de Deteccion del Incidente</label>
-                            <input name="f_deteccion" type="date" class="form-control" required>
+                            <input name="f_deteccion" type="date" id="f_deteccion" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Descripcion del Incidente</label>
@@ -527,32 +526,24 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel I)</label>
-                            <select name="c_clasificacion1" class="form-control" required>
+                            <select name="c_clasificacion1" id="c_clasificacion1" class="form-control" required>
+                                <option value="">----SELECCIONE UNA OPCION----</option>
                                 <?php
                                 include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM taxonomia1;";
+                                $sql_leer = "SELECT * FROM taxonomia1 WHERE user = '" . $sesionrol . "';";
                                 $gsent = $pdo->prepare($sql_leer);
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo '<option value="'. $dato['id'] .'"> ' . $dato['taxonomia'] . ' </option>';
+                                    echo '<option value="' . $dato['id'] . '"> ' . $dato['taxonomia'] . ' </option>';
                                 endforeach
                                 ?>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel II)</label>
-                            <select name="c_clasificacion2" class="form-control" required>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM taxonomia2 WHERE usuario = '$sesionrol';";
-                                $gsent = $pdo->prepare($sql_leer);
-                                $gsent->execute();
-                                $resultado = $gsent->fetchAll();
-                                foreach ($resultado as $dato) :
-                                    echo '<option value="'. $dato['codigo'] .'"> ' . $dato['taxonomia2'] . ' </option>';
-                                endforeach
-                                ?>
+                            <select id="c_clasificacion2" name="c_clasificacion2" class="form-control" required>
+                                <option value="">----SELECCIONE UNA OPCION----</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -562,14 +553,14 @@ if (!function_exists('getShortedString')) {
                         <div class="form-group">
                             <label>Daño Reputacional: </label>
                             <label style="padding-left: 5px;" class="form-check-label" for="flexRadioDefault1">No</label>
-                            <input name="dano" type="radio" id="rb_1" class="form-check" value="1" checked> 
+                            <input name="dano" type="radio" id="rb_1" class="form-check" value="1" checked>
                             <label class="form-check-label" for="flexRadioDefault1">Si</label>
                             <input name="dano" type="radio" id="rb_2" class="form-check" value="0" required>
                         </div>
                         <div class="form-group">
                             <label>Afecto Procesos Criticos: </label>
                             <label style="padding-left: 5px;" class="form-check-label" for="flexRadioDefault1">No</label>
-                            <input name="procesos" type="radio" id="rb_3" class="form-check" value="1" checked> 
+                            <input name="procesos" type="radio" id="rb_3" class="form-check" value="1" checked>
                             <label class="form-check-label" for="flexRadioDefault1">Si</label>
                             <input name="procesos" type="radio" id="rb_4" class="form-check" value="0" required>
                         </div>
@@ -616,15 +607,15 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Asunto</label>
-                            <textarea id="asunto" maxlength="100" name="asunto" class="form-control" required></textarea>
+                            <textarea id="easunto" maxlength="100" name="asunto" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Fecha del Incidente</label>
-                            <input id="f_incidente" name="f_incidente" type="date" class="form-control" required>
+                            <input id="ef_incidente" name="f_incidente" type="date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Fecha de Deteccion del Incidente</label>
-                            <input id="f_deteccion" name="f_deteccion" type="date" class="form-control" required>
+                            <input id="ef_deteccion" name="f_deteccion" type="date" class="form-control" required>
                         </div>
                         <div class="form-group">
                             <label>Descripcion del Incidente</label>
@@ -636,7 +627,7 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel I)</label>
-                            <select id="c_clasificacion1" name="c_clasificacion1" class="form-control" required>
+                            <select id="ec_clasificacion1" name="c_clasificacion1" class="form-control" required>
                                 <?php
                                 include_once 'conexion.php';
                                 $sql_leer = "SELECT * FROM taxonomia1;";
@@ -651,7 +642,7 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel II)</label>
-                            <select id="c_clasificacion2" name="c_clasificacion2" class="form-control" required>
+                            <select id="ec_clasificacion2" name="c_clasificacion2" class="form-control" required>
                                 <?php
                                 include_once 'conexion.php';
                                 $sql_leer = "SELECT * FROM taxonomia2 WHERE usuario = '$sesionrol';";
@@ -670,7 +661,7 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Daño Reputacional</label>
-                            <select name="dano" id="daño" class="form-control" required>
+                            <select name="dano" id="edaño" class="form-control" required>
                                 <?php
                                 include_once 'conexion.php';
                                 $sql_leer = "SELECT * FROM opciones;";
@@ -685,7 +676,7 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Afecto Procesos Criticos</label>
-                            <select name="procesos" id="procesos" class="form-control" required>
+                            <select name="procesos" id="eprocesos" class="form-control" required>
                                 <?php
                                 include_once 'conexion.php';
                                 $sql_leer = "SELECT * FROM opciones;";
@@ -914,25 +905,25 @@ if (!function_exists('getShortedString')) {
             e.preventDefault();
         });
     });
-    $(document).ready(function() {
+    /*$(document).ready(function() {
         $("#fecha_inicio").on('change', function(e) {
             eliminar_datos();
             e.preventDefault();
         });
-    });
+    });*/
 
     function agregar_datos() {
-        var datos = $("#ingresar").serialize();
-        $.ajax({
-            method: "GET",
-            url: "Operaciones.php",
-            data: datos,
-            success: function(e) {
-                Swal.fire("EXITO!", "Se Registro el Incidente Exitosamente", "success").then(function() {
-                    location.reload();
-                });
-            }
-        });
+            var datos = $("#ingresar").serialize();
+            $.ajax({
+                method: "GET",
+                url: "Operaciones.php",
+                data: datos,
+                success: function(e) {
+                    Swal.fire("EXITO!", "Se Registro el Incidente Exitosamente", "success").then(function() {
+                        location.reload();
+                    });
+                }
+            });
     }
 
     function modificar_datos() {
@@ -972,7 +963,19 @@ if (!function_exists('getShortedString')) {
         });
     }*/
 
-    
+    $(document).ready(function() {
+        $("#c_clasificacion1").change(function() {
+            $("#c_clasificacion1 option:selected").each(function() {
+                id_estado = $(this).val();
+                $.post("getTaxonomia2.php", {
+                        id_estado: id_estado
+                    },
+                    function(data) {
+                        $("#c_clasificacion2").html(data);
+                    });
+            });
+        })
+    });
 </script>
 
 </html>
