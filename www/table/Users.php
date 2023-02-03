@@ -22,9 +22,6 @@
         font-family: 'Varela Round', sans-serif;
         font-size: 13px;
     }
-
-    .table-responsive {}
-
     .table-wrapper {
         background: #fff;
         padding: 20px 25px;

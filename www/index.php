@@ -11,10 +11,8 @@
     * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
       * Enable inline JS: add 'unsafe-inline' to default-src
   -->
-  <meta http-equiv="Content-Security-Policy"
-    content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: content:">
-  <meta name="viewport"
-    content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta http-equiv="Content-Security-Policy" content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: content:">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, viewport-fit=cover">
 
   <meta name="theme-color" content="#fff">
   <meta name="format-detection" content="telephone=no">
@@ -32,15 +30,6 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 
-<Script>
-function alertas(){
-  <?php
-    ?>
-alert("<?php echo $sesion ?>");
-  
-}
-</Script>
-
 <body>
   <div id="app">
     <!-- Left panel with cover effect-->
@@ -50,7 +39,7 @@ alert("<?php echo $sesion ?>");
           <div class="navbar">
             <div class="navbar-bg"></div>
             <div onclick="window.location = 'index.php';" class="navbar-inner">
-              <div class="title" >INICIO</div>
+              <div class="title">INICIO</div>
             </div>
           </div>
           <div class="page-content">
@@ -61,12 +50,12 @@ alert("<?php echo $sesion ?>");
               </a>
             </div>
             <div class="block"><a href="#" onclick="P.src= './pages/Eventos.php';" id="Users" style="background-color: white;" class="col button button-outline">
-              <div class="item-inner">
-                <div class="item-title">Eventos</div>
-              </div>
-            </a>
-          </div>
-          <div class="block"><a href="#" onclick="P.src= './pages/grafico.php';" id="Users" style="background-color: white;" class="col button button-outline">
+                <div class="item-inner">
+                  <div class="item-title">Eventos</div>
+                </div>
+              </a>
+            </div>
+            <div class="block"><a href="#" onclick="P.src= './pages/grafico.php';" id="Users" style="background-color: white;" class="col button button-outline">
                 <div class="item-inner">
                   <div class="item-title">Graficos y Estadisticas</div>
                 </div>
@@ -123,7 +112,7 @@ alert("<?php echo $sesion ?>");
         <div class="page page-with-navbar-large page-current page-with-navbar-large-collapsed" data-name="home">
           <!-- Top Navbar -->
           <div class="navbar navbar-large navbar-large-collapsed">
-            
+
             <div class="navbar-inner">
               <div class="left">
                 <a href="#" class="link icon-only panel-open" data-panel="left">
@@ -132,12 +121,12 @@ alert("<?php echo $sesion ?>");
                 </a>
               </div>
               <div class="title sliding">Gestion de Eventos</div>
-              <!-- <div class="right">
-                <a href="#" class="link icon-only panel-open" data-panel="right">
-                  <i class="icon f7-icons if-not-md">menu</i>
-                  <i class="icon material-icons if-md">menu</i>
+              <div class="right" style="padding-right: 20px;">
+                <a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup">
+                  <i class="icon f7-icons if-not-md">person_2_fill</i>
+                  <i class="icon material-icons if-md">person_2_fill</i>
                 </a>
-              </div> -->
+              </div>
             </div>
           </div>
 
@@ -223,27 +212,32 @@ alert("<?php echo $sesion ?>");
 
 
         <!-- Popup -->
-        <!-- <div class="popup" id="my-popup">
-      <div class="view">
-        <div class="page">
-          <div class="navbar">
-            <div class="navbar-bg"></div>
-            <div class="navbar-inner">
-              <div class="title">Popup</div>
-              <div class="right">
-                <a href="#" class="link popup-close">Close</a>
+        <div class="popup" id="my-popup">
+          <div class="view">
+            <div class="page">
+              <div class="navbar">
+                <div class="navbar-bg"></div>
+                <div class="navbar-inner">
+                  <div class="title">Log Out</div>
+                  <div class="right">
+                    <a href="#" class="link popup-close">Cerrar</a>
+                  </div>
+                </div>
+              </div>
+              <div class="page-content">
+                <div class="block">
+                  <H1 style="text-align: center;"><p>CERRAR SESION</p></H1>
+                  <img width="150px" height="150px" src="./assets/icons/logging-out-2355227_1280.png" style="display: block; margin: auto;">
+                <div style="padding-top: 40px;">
+                <button onclick="window.location='LogOut.php'" class="col button button-raised button-fill button-round">Log Out</button>
+                </div>
+                  
+                </div>
               </div>
             </div>
           </div>
-          <div class="page-content">
-            <div class="block">
-              <p>Popup content goes here.</p>
-            </div>
-          </div>
         </div>
-      </div>
-    </div>
-  -->
+
         <!-- Login Screen -->
         <!-- <div class="login-screen" id="my-login-screen">
       <div class="view">
@@ -268,7 +262,7 @@ alert("<?php echo $sesion ?>");
                       
                       <input type="password" name="password" placeholder="Your password"/>
                     </div>
-                  </div>
+                    </div>
                 </li>
               </ul>
             </div>

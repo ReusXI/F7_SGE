@@ -437,9 +437,9 @@ if (!function_exists('getShortedString')) {
                     <tbody>
                         <?php
                         include_once 'conexion.php';
-                        $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño_reputacional', C.opcion as 'afecto_procesos_criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
+                        $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
                         if (isset($_GET['fecha_inicio']) != null) {
-                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño_reputacional', C.opcion as 'afecto_procesos_criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
+                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
                         }
 
                         $gsent = $pdo->prepare($sql_leer);
@@ -449,7 +449,7 @@ if (!function_exists('getShortedString')) {
                         ?>
                             <tr>
                                 <td><?= $dato['codigo_incidente']; ?></td>
-                                <td><?= getShortedString($dato['asunto'], 50);?></td>
+                                <td><?= getShortedString($dato['asunto'], 50); ?></td>
                                 <td><?= $dato['f_incidente']; ?></td>
                                 <td><?= $dato['f_deteccion_incidente']; ?></td>
                                 <td><?= getShortedString($dato['descripcion_incidente'], 50); ?></td>
@@ -457,8 +457,8 @@ if (!function_exists('getShortedString')) {
                                 <td><?= $dato['taxonomia']; ?></td>
                                 <td><?= $dato['taxonomia2']; ?></td>
                                 <td><?= $dato['impacto_economico_estimado']; ?></td>
-                                <td><?= $dato['daño_reputacional']; ?></td>
-                                <td><?= $dato['afecto_procesos_criticos']; ?></td>
+                                <td><?= $dato['daño']; ?></td>
+                                <td><?= $dato['criticos']; ?></td>
                                 <td><?= $dato['tiempo_interrupcion']; ?></td>
                                 <td><?= $dato['tiempo_resolucion_incidente']; ?></td>
                                 <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
@@ -467,12 +467,6 @@ if (!function_exists('getShortedString')) {
                                 '<?= $dato['r_t_afectados']; ?>','<?= $dato['codigo_clasificacion_1']; ?>','<?= $dato['codigo_clasificacion_2']; ?>',
                                 '<?= $dato['impacto_economico_estimado']; ?>','<?= $dato['daño_reputacional']; ?>','<?= $dato['afecto_procesos_criticos']; ?>',
                                 '<?= $dato['tiempo_interrupcion']; ?>','<?= $dato['tiempo_resolucion_incidente']; ?>','<?= $dato['usuario']; ?>', '<?= $dato['fecha_registro']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <a href="#editEmployeeModal1" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
-                                '<?= $dato['codigo_incidente']; ?>', '<?= $dato['asunto']; ?>','<?= $dato['f_incidente']; ?>',
-                                '<?= $dato['f_deteccion_incidente']; ?>','<?= $dato['descripcion_incidente']; ?>',
-                                '<?= $dato['r_t_afectados']; ?>','<?= $dato['taxonomia']; ?>','<?= $dato['taxonomia2']; ?>',
-                                '<?= $dato['impacto_economico_estimado']; ?>','<?= $dato['daño_reputacional']; ?>','<?= $dato['afecto_procesos_criticos']; ?>',
-                                '<?= $dato['tiempo_interrupcion']; ?>','<?= $dato['tiempo_resolucion_incidente']; ?>','<?= $dato['usuario']; ?>', '<?= $dato['fecha_registro']; ?>')" class="new" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Vista">insert_chart</i></a>
                                     <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
                                 </td>
                             </tr>
@@ -627,7 +621,8 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel I)</label>
-                            <select id="ec_clasificacion1" name="c_clasificacion1" class="form-control" required>
+                            <select name="c_clasificacion1" id="ec_clasificacion1" class="form-control" required>
+                                <option value="">----SELECCIONE UNA OPCION----</option>
                                 <?php
                                 include_once 'conexion.php';
                                 $sql_leer = "SELECT * FROM taxonomia1;";
@@ -635,7 +630,7 @@ if (!function_exists('getShortedString')) {
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
+                                    echo '<option value="' . $dato['id'] . '"> ' . $dato['taxonomia'] . ' </option>';
                                 endforeach
                                 ?>
                             </select>
@@ -645,12 +640,12 @@ if (!function_exists('getShortedString')) {
                             <select id="ec_clasificacion2" name="c_clasificacion2" class="form-control" required>
                                 <?php
                                 include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM taxonomia2 WHERE usuario = '$sesionrol';";
+                                $sql_leer = "SELECT * FROM taxonomia2;";
                                 $gsent = $pdo->prepare($sql_leer);
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['codigo'] . " </option>";
+                                    echo '<option value="' . $dato['codigo'] . '"> ' . $dato['taxonomia2'] . ' </option>';
                                 endforeach
                                 ?>
                             </select>
@@ -669,7 +664,7 @@ if (!function_exists('getShortedString')) {
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
+                                    echo "<option value='" . $dato['id'] . "'> " . $dato['opcion'] . " </option>";
                                 endforeach
                                 ?>
                             </select>
@@ -684,7 +679,7 @@ if (!function_exists('getShortedString')) {
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
                                 foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
+                                    echo "<option value='" . $dato['id'] . "'> " . $dato['opcion'] . " </option>";
                                 endforeach
                                 ?>
                             </select>
@@ -707,120 +702,7 @@ if (!function_exists('getShortedString')) {
             </div>
         </div>
     </div>
-    <!-- Edit Modal HTML -->
-    <div id="editEmployeeModal1" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form id="editar">
-                    <div class="modal-header">
-                        <h4 class="modal-title">EDITAR EVENTO</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                    </div>
-                    <label id="Label1" style="padding-left: 5px;" name="Label1">AQUI VA LA FECHA DEL REGISTRO</label>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label>Tipo de Institucion</label>
-                            <input id="t_institucion" maxlength="2" name="t_institucion" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Codigo de Institucion</label>
-                            <input id="c_institucion" maxlength="2" name="c_institucion" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Codigo del Incidente</label>
-                            <input id="c_incidente" readonly="" maxlength="50" name="c_incidente" type="text" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Asunto</label>
-                            <textarea id="asunto" maxlength="100" name="asunto" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Fecha del Incidente</label>
-                            <input id="f_incidente" name="f_incidente" type="date" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Fecha de Deteccion del Incidente</label>
-                            <input id="f_deteccion" name="f_deteccion" type="date" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Descripcion del Incidente</label>
-                            <textarea id="descripcion" maxlength="1000" cols="40" rows="10" name="descripcion" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Recursos Tecnologicos Afectados</label>
-                            <textarea cols="40" maxlength="1000" rows="10" id="r_t_afectados" name="r_t_afectados" class="form-control" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Codigo de Clasificacion (Nivel I)</label>
-                            <select id="c_clasificacion1" name="c_clasificacion1" class="form-control" required>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM taxonomia1;";
-                                $gsent = $pdo->prepare($sql_leer);
-                                $gsent->execute();
-                                $resultado = $gsent->fetchAll();
-                                foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
-                                endforeach
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Codigo de Clasificacion (Nivel II)</label>
-                            <select id="c_clasificacion2" name="c_clasificacion2" class="form-control" required>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM taxonomia2 WHERE usuario = '$sesionrol';";
-                                $gsent = $pdo->prepare($sql_leer);
-                                $gsent->execute();
-                                $resultado = $gsent->fetchAll();
-                                foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['codigo'] . " </option>";
-                                endforeach
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Impacto Economico Estimado</label>
-                            <input name="economico" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="economico" type="number" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Daño Reputacional</label>
-                            <select name="dano" id="daño" class="form-control" required>
-                                <?php
-                                include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM opciones;";
-                                $gsent = $pdo->prepare($sql_leer);
-                                $gsent->execute();
-                                $resultado = $gsent->fetchAll();
-                                foreach ($resultado as $dato) :
-                                    echo "<option> " . $dato['id'] . " </option>";
-                                endforeach
-                                ?>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Afecto Procesos Criticos</label>
-                            <input name="procesos" id="procesos" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label>Tiempo de Interrupcion</label>
-                            <input name="t_interrupcion" id="t_interrupcion" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" class="form-control" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Tiempo de Resolucion del Incidente</label>
-                            <input name="t_resolucion" maxlength="17" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" id="t_resolucion" type="number" class="form-control" required>
-                        </div>
-                        <input name="inp_editar" value="45" type="hidden">
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                        <input name="btn_editar" id="btn_editar" type="submit" class="btn btn-info" value="Guardar">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+
     <!-- Delete Modal HTML -->
     <!--  <div id="deleteEmployeeModal" class="modal fade">
         <div class="modal-dialog">
@@ -913,17 +795,17 @@ if (!function_exists('getShortedString')) {
     });*/
 
     function agregar_datos() {
-            var datos = $("#ingresar").serialize();
-            $.ajax({
-                method: "GET",
-                url: "Operaciones.php",
-                data: datos,
-                success: function(e) {
-                    Swal.fire("EXITO!", "Se Registro el Incidente Exitosamente", "success").then(function() {
-                        location.reload();
-                    });
-                }
-            });
+        var datos = $("#ingresar").serialize();
+        $.ajax({
+            method: "GET",
+            url: "Operaciones.php",
+            data: datos,
+            success: function(e) {
+                Swal.fire("EXITO!", "Se Registro el Incidente Exitosamente", "success").then(function() {
+                    location.reload();
+                });
+            }
+        });
     }
 
     function modificar_datos() {
@@ -972,6 +854,19 @@ if (!function_exists('getShortedString')) {
                     },
                     function(data) {
                         $("#c_clasificacion2").html(data);
+                    });
+            });
+        })
+    });
+    $(document).ready(function() {
+        $("#ec_clasificacion1").change(function() {
+            $("#ec_clasificacion1 option:selected").each(function() {
+                id_estado = $(this).val();
+                $.post("getTaxo.php", {
+                        id_estado: id_estado
+                    },
+                    function(data) {
+                        $("#ec_clasificacion2").html(data);
                     });
             });
         })
