@@ -415,64 +415,67 @@ if (!function_exists('getShortedString')) {
                         <a href="#addEmployeeModal" class="btn btn-success" style="margin-left: 50px;" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Incidente</span></a>
                     </div>
                 </div>
-                <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
-                    <thead class="table-dark">
-                        <tr class="table-dark">
-                            <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
-                            <th data-field="Asunto" data-editable="false">Asunto</th>
-                            <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
-                            <th data-field="Fecha de Deteccion" data-editable="false">Fecha de Deteccion</th>
-                            <th data-field="Descripcion" data-editable="false">Descripcion</th>
-                            <th data-field="Recursos Tecnologicos Afectados" data-editable="false">Recursos Tecnologicos Afectados</th>
-                            <th data-field="Clasificacion(Nivel I)" data-editable="false">Clasificacion(Nivel I)</th>
-                            <th data-field="Clasificacion(Nivel II)" data-editable="false">Clasificacion(Nivel II)</th>
-                            <th data-field="Impacto Economico Estimado" data-editable="false">Impacto Economico Estimado</th>
-                            <th data-field="Daño Reputacional" data-editable="false">Daño Reputacional</th>
-                            <th data-field="Afectó Procesos Criticos" data-editable="false">Afectó Procesos Criticos</th>
-                            <th data-field="Tiempo Interrupcion" data-editable="false">Tiempo Interrupcion</th>
-                            <th data-field="Tiempo Resolucion" data-editable="false">Tiempo Resolucion</th>
-                            <th data-field="Accion" data-editable="false">Accion</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        include_once 'conexion.php';
-                        $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
-                        if (isset($_GET['fecha_inicio']) != null) {
-                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
-                        }
+                <div id="tabla">
+                    <table class="table table-striped table-hover" id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                        <thead class="table-dark">
+                            <tr class="table-dark">
+                                <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
+                                <th data-field="Asunto" data-editable="false">Asunto</th>
+                                <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
+                                <th data-field="Fecha de Deteccion" data-editable="false">Fecha de Deteccion</th>
+                                <th data-field="Descripcion" data-editable="false">Descripcion</th>
+                                <th data-field="Recursos Tecnologicos Afectados" data-editable="false">Recursos Tecnologicos Afectados</th>
+                                <th data-field="Clasificacion(Nivel I)" data-editable="false">Clasificacion(Nivel I)</th>
+                                <th data-field="Clasificacion(Nivel II)" data-editable="false">Clasificacion(Nivel II)</th>
+                                <th data-field="Impacto Economico Estimado" data-editable="false">Impacto Economico Estimado</th>
+                                <th data-field="Daño Reputacional" data-editable="false">Daño Reputacional</th>
+                                <th data-field="Afectó Procesos Criticos" data-editable="false">Afectó Procesos Criticos</th>
+                                <th data-field="Tiempo Interrupcion" data-editable="false">Tiempo Interrupcion</th>
+                                <th data-field="Tiempo Resolucion" data-editable="false">Tiempo Resolucion</th>
+                                <th data-field="Accion" data-editable="false">Accion</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            include_once 'conexion.php';
+                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
+                            if (isset($_GET['fecha_inicio']) != null) {
+                                $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
+                            }
 
-                        $gsent = $pdo->prepare($sql_leer);
-                        $gsent->execute();
-                        $resultado = $gsent->fetchAll();
-                        foreach ($resultado as $dato) :
-                        ?>
-                            <tr>
-                                <td><?= $dato['codigo_incidente']; ?></td>
-                                <td><?= getShortedString($dato['asunto'], 50); ?></td>
-                                <td><?= $dato['f_incidente']; ?></td>
-                                <td><?= $dato['f_deteccion_incidente']; ?></td>
-                                <td><?= getShortedString($dato['descripcion_incidente'], 50); ?></td>
-                                <td><?= getShortedString($dato['r_t_afectados'], 50); ?></td>
-                                <td><?= $dato['taxonomia']; ?></td>
-                                <td><?= $dato['taxonomia2']; ?></td>
-                                <td><?= $dato['impacto_economico_estimado']; ?></td>
-                                <td><?= $dato['daño']; ?></td>
-                                <td><?= $dato['criticos']; ?></td>
-                                <td><?= $dato['tiempo_interrupcion']; ?></td>
-                                <td><?= $dato['tiempo_resolucion_incidente']; ?></td>
-                                <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
+                            $gsent = $pdo->prepare($sql_leer);
+                            $gsent->execute();
+                            $resultado = $gsent->fetchAll();
+                            foreach ($resultado as $dato) :
+                            ?>
+                                <tr>
+                                    <td><?= $dato['codigo_incidente']; ?></td>
+                                    <td><?= getShortedString($dato['asunto'], 50); ?></td>
+                                    <td><?= $dato['f_incidente']; ?></td>
+                                    <td><?= $dato['f_deteccion_incidente']; ?></td>
+                                    <td><?= getShortedString($dato['descripcion_incidente'], 50); ?></td>
+                                    <td><?= getShortedString($dato['r_t_afectados'], 50); ?></td>
+                                    <td><?= $dato['taxonomia']; ?></td>
+                                    <td><?= $dato['taxonomia2']; ?></td>
+                                    <td><?= $dato['impacto_economico_estimado']; ?></td>
+                                    <td><?= $dato['daño']; ?></td>
+                                    <td><?= $dato['criticos']; ?></td>
+                                    <td><?= $dato['tiempo_interrupcion']; ?></td>
+                                    <td><?= $dato['tiempo_resolucion_incidente']; ?></td>
+                                    <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['t_institucion']; ?>', '<?= $dato['c_institucion']; ?>',
                                 '<?= $dato['codigo_incidente']; ?>', '<?= $dato['asunto']; ?>','<?= $dato['f_incidente']; ?>',
                                 '<?= $dato['f_deteccion_incidente']; ?>','<?= $dato['descripcion_incidente']; ?>',
                                 '<?= $dato['r_t_afectados']; ?>','<?= $dato['codigo_clasificacion_1']; ?>','<?= $dato['codigo_clasificacion_2']; ?>',
                                 '<?= $dato['impacto_economico_estimado']; ?>','<?= $dato['daño_reputacional']; ?>','<?= $dato['afecto_procesos_criticos']; ?>',
                                 '<?= $dato['tiempo_interrupcion']; ?>','<?= $dato['tiempo_resolucion_incidente']; ?>','<?= $dato['usuario']; ?>', '<?= $dato['fecha_registro']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
-                                    <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
-                                </td>
-                            </tr>
-                        <?php endforeach ?>
-                    </tbody>
-                </table>
+                                        <!-- <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('// $dato['codigo_incidente']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a> -->
+                                    </td>
+                                </tr>
+                            <?php endforeach ?>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
     </div>
