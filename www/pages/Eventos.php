@@ -420,10 +420,10 @@ if (!function_exists('getShortedString')) {
                         <thead class="table-dark">
                             <tr class="table-dark">
                                 <th data-field="Codigo Incidente" data-editable="false">Codigo Incidente</th>
-                                <th data-field="Asunto" data-editable="false">Asunto</th>
-                                <th data-field="Fecha de Incidente" data-editable="false">Fecha de Incidente</th>
-                                <th data-field="Fecha de Deteccion" data-editable="false">Fecha de Deteccion</th>
-                                <th data-field="Descripcion" data-editable="false">Descripcion</th>
+                                <th data-field="Asunto" data-editable="false">----- Asunto -----</th>
+                                <th data-field="Fecha_Incidente" data-editable="false">Fecha_Incidente</th>
+                                <th data-field="Fecha_Deteccion" data-editable="false">Fecha_Deteccion</th>
+                                <th data-field="Descripcion" data-editable="false">-------Descripcion-------</th>
                                 <th data-field="Recursos Tecnologicos Afectados" data-editable="false">Recursos Tecnologicos Afectados</th>
                                 <th data-field="Clasificacion(Nivel I)" data-editable="false">Clasificacion(Nivel I)</th>
                                 <th data-field="Clasificacion(Nivel II)" data-editable="false">Clasificacion(Nivel II)</th>
@@ -503,7 +503,7 @@ if (!function_exists('getShortedString')) {
                         </div> -->
                         <div class="form-group">
                             <label>Asunto</label>
-                            <textarea maxlength="100" name="asunto" id="asunto" class="form-control" required></textarea>
+                            <textarea cols="20" rows="4" maxlength="100" name="asunto" id="asunto" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Fecha del Incidente</label>
@@ -604,7 +604,7 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="form-group">
                             <label>Asunto</label>
-                            <textarea id="easunto" maxlength="100" name="asunto" class="form-control" required></textarea>
+                            <textarea cols="40" rows="4" id="easunto" maxlength="100" name="asunto" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Fecha del Incidente</label>

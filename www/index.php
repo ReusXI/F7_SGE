@@ -30,7 +30,7 @@
   <link rel="stylesheet" href="css/app.css">
 </head>
 
-<body>
+<body onload="P.src='Inicio.php'">
   <div id="app">
     <!-- Left panel with cover effect-->
     <div class="panel panel-left panel-cover dark panel-init">
@@ -55,7 +55,7 @@
                 </div>
               </a>
             </div>
-            <div class="block"><a href="#" onclick="P.src= './pages/grafico.php';" id="Users" style="background-color: white;" class="col button button-outline">
+            <div class="block"><a href="#" onclick="P.src= './pages/dashboards.php';" id="Users" style="background-color: white;" class="col button button-outline">
                 <div class="item-inner">
                   <div class="item-title">Graficos y Estadisticas</div>
                 </div>
@@ -64,6 +64,12 @@
             <div class="block"><a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup1">
                 <div class="item-inner">
                   <div class="item-title">Exportar a Excel</div>
+                </div>
+              </a>
+            </div>
+            <div class="block"><a href="#" class="button button-raised button-fill popup-open" data-popup="#my-popup2">
+                <div class="item-inner">
+                  <div class="item-title">Exportar a Texto</div>
                 </div>
               </a>
             </div>
@@ -237,7 +243,7 @@
                   </H1>
                   <img width="150px" height="150px" src="./assets/icons/logging-out-2355227_1280.png" style="display: block; margin: auto;">
                   <div style="padding-top: 40px;">
-                    <button onclick="window.location='LogOut.php'" class="col button button-raised button-fill button-round">Log Out</button>
+                    <button onclick="window.location='LogOut.php'" class="col button button-raised button-fill button-round">Finalizar Sesion</button>
                   </div>
 
                 </div>
@@ -263,17 +269,17 @@
                 <div class="block">
                   <h1>OPCIONES DE EXPORTACION</h1>
                   <hr>
-                  <form action="./pages/ExportXLS.php">
-                    <center><label>EXPORTAR DESDE:</label>
+                  <form action="./pages/ExportEXCEL.php">
+                    <center><label>EXPORTAR EVENTOS DESDE:</label>
                       <select id="opciones" name="opciones" onchange="DATES();" style="width: 500px; padding: 10px; background:#edf2ff; border:none;" class="">
                         <option value="1">TODO</option>
                         <option value="2">ULTIMOS 6 MESES</option>
                         <option value="3">ELEGIR FECHAS</option>
                       </select>
                       <br>
-                      <input type="date" name="desde" id="desde" style="width: 400px; padding: 10px; background: #BDFFB6; border:none; visibility:hidden;" disabled="true">
+                      <input type="date" name="desde" id="desde" style="width: 400px; padding: 10px; background: #BDFFB6; border:none; visibility:hidden;" disabled="true" required>
                       <br>
-                      <input type="date" name="hasta" id="hasta" style="width: 400px; padding: 10px; background:#BDFFB6; border:none; visibility:hidden;" disabled="true">
+                      <input type="date" name="hasta" id="hasta" style="width: 400px; padding: 10px; background:#BDFFB6; border:none; visibility:hidden;" disabled="true" required>
                       <br>
                       <hr>
                       <button type="Submit" id="ExportarXLS" class="col button button-small" name="ExportarXLS">EXPORTAR</button>
@@ -285,6 +291,43 @@
           </div>
         </div>
 
+        <div class="popup" id="my-popup2">
+          <div class="view">
+            <div class="page">
+              <div class="navbar">
+                <div class="navbar-bg"></div>
+                <div class="navbar-inner">
+                  <div class="title">Exportar a Texto</div>
+                  <div class="right">
+                    <a href="#" class="link popup-close">Cerrar</a>
+                  </div>
+                </div>
+              </div>
+              <div class="page-content">
+                <div class="block">
+                  <h1>OPCIONES DE EXPORTACION</h1>
+                  <hr>
+                  <form action="./pages/ExportTEXT.php">
+                    <center><label>EXPORTAR EVENTOS DESDE:</label>
+                      <select id="opciones5" name="opciones5" onchange="DATES1();" style="width: 500px; padding: 10px; background:#edf2ff; border:none;" class="">
+                        <option value="1">TODO</option>
+                        <option value="2">ULTIMOS 6 MESES</option>
+                        <option value="3">ELEGIR FECHAS</option>
+                      </select>
+                      <br>
+                      <input type="date" name="fdesde" id="fdesde" style="width: 400px; padding: 10px; background: #BDFFB6; border:none; visibility:hidden;" disabled="true" required>
+                      <br>
+                      <input type="date" name="fhasta" id="fhasta" style="width: 400px; padding: 10px; background:#BDFFB6; border:none; visibility:hidden;" disabled="true" required>
+                      <br>
+                      <hr>
+                      <button type="Submit" id="ExportarXLS" class="col button button-small" name="ExportarXLS">EXPORTAR</button>
+                    </center>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <!-- Login Screen -->
         <!-- <div class="login-screen" id="my-login-screen">
       <div class="view">
@@ -342,6 +385,21 @@
       document.getElementById('desde').style.visibility = 'hidden';
       document.getElementById('hasta').disabled = true;
       document.getElementById('hasta').style.visibility = 'hidden';
+    }
+  }
+  function DATES1(){
+    var x = document.getElementById('opciones5').value;
+
+    if(x == 3){
+      document.getElementById('fdesde').disabled = false;
+      document.getElementById('fdesde').style.visibility = 'visible';
+      document.getElementById('fhasta').disabled = false;
+      document.getElementById('fhasta').style.visibility = 'visible';
+    }else{
+      document.getElementById('fdesde').disabled = true;
+      document.getElementById('fdesde').style.visibility = 'hidden';
+      document.getElementById('fhasta').disabled = true;
+      document.getElementById('fhasta').style.visibility = 'hidden';
     }
   }
 </script>

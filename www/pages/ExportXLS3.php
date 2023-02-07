@@ -29,14 +29,14 @@ header("Content-Disposition: attachment; filename= ROPSSCI" . Date("Ymd") . ".xl
     <tbody>
         <?php
         include_once 'conexion.php';
-        $sql_leer = "SELECT * FROM Evento ORDER BY codigo_incidente DESC;";
+        $sql_leer = "SELECT * from evento WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' ORDER BY codigo_incidente DESC;";
         $gsent = $pdo->prepare($sql_leer);
         $gsent->execute();
         $resultado = $gsent->fetchAll();
         foreach ($resultado as $dato) :
         ?>
             <tr>
-            <td><?= $dato['t_institucion']; ?></td>
+                <td><?= $dato['t_institucion']; ?></td>
                 <td><?= $dato['c_institucion']; ?></td>
                 <td><?= Date("Y-m-d") ?></td>
                 <td><?= $dato['codigo_incidente']; ?></td>

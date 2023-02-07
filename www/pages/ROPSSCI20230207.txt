@@ -1,0 +1,60 @@
+Tipo de Institucion: IT
+Codigo de Institucion: 03
+Fecha Reporte de Datos: 2023-02-07
+Codigo Incidente: INF-2023-004
+Asunto: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso
+Fecha del Incidente: 2022-09-08
+Fecha de Deteccion del Incidente: 2023-02-07
+Descripcion del Incidente: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso
+Recursos Tecnologicos Afectados: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso
+Codigo de Clasificacion(Nivel I): 01
+Codigo de Clasificacion(Nivel II): 07
+Impacto Economico Estimado: 0
+Daño Reputacional: 1
+Afecto Procesos Criticos: 1
+Tiempo Interrupcion: 5
+Tiempo Resolucion: 4
+Fecha de Registro: 2023-02-07
+Usuario: Osman
+    
+
+Tipo de Institucion: IT
+Codigo de Institucion: 03
+Fecha Reporte de Datos: 2023-02-07
+Codigo Incidente: INF-2023-002
+Asunto: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso
+Fecha del Incidente: 2023-02-07
+Fecha de Deteccion del Incidente: 2023-02-09
+Descripcion del Incidente: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base
+Recursos Tecnologicos Afectados: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base
+Codigo de Clasificacion(Nivel I): 02
+Codigo de Clasificacion(Nivel II): 05
+Impacto Economico Estimado: 0
+Daño Reputacional: 0
+Afecto Procesos Criticos: 1
+Tiempo Interrupcion: 1
+Tiempo Resolucion: 2
+Fecha de Registro: 2023-02-07
+Usuario: Osman
+    
+
+Tipo de Institucion: IT
+Codigo de Institucion: IT
+Fecha Reporte de Datos: 2023-02-07
+Codigo Incidente: INF-2023-001
+Asunto: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso
+Fecha del Incidente: 2023-02-02
+Fecha de Deteccion del Incidente: 2023-02-10
+Descripcion del Incidente: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base
+Recursos Tecnologicos Afectados: Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base
+Codigo de Clasificacion(Nivel I): 02
+Codigo de Clasificacion(Nivel II): 04
+Impacto Economico Estimado: 1
+Daño Reputacional: 1
+Afecto Procesos Criticos: 0
+Tiempo Interrupcion: 1
+Tiempo Resolucion: 1
+Fecha de Registro: 2023-02-02
+Usuario: Epinto
+    
+

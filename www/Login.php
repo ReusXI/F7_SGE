@@ -65,7 +65,7 @@ if (isset($_GET['error']) != null) {
     <div class="page no-navbar no-toolbar no-swipeback login-screen-page">
       <div class="page-content login-screen-content">
         <form action="Check.php" method="GET" id="Logger">
-          <div class="login-screen-title">Login</div>
+          <div class="login-screen-title">Inicio de Sesion</div>
           <div class="list">
             <ul>
               <li class="item-content item-input">
