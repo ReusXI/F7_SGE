@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
-
+<?php
+session_start();
+$sesionrol = $_SESSION['rol'];
+if($sesionrol == null){
+  header('Location: Login.php');
+}
+?>
 <head>
   <meta charset="utf-8">
   <!--

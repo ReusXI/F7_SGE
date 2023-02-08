@@ -4,6 +4,11 @@
 <?php
 session_start();
 $sesionrol = $_SESSION['rol'];
+if ($sesionrol == null) {
+    header('Location: Login.php');
+}
+
+
 ?>
 <?php
 if (!function_exists('getShortedString')) {
@@ -22,6 +27,10 @@ if (!function_exists('getShortedString')) {
             return $formatedString;
         }
     }
+}
+if(isset($_GET['buscar']) != null){
+    $finicio = $_GET['fecha_inicio'];
+    $ffin = $_GET['fecha_fin'];
 }
 ?>
 
@@ -390,6 +399,8 @@ if (!function_exists('getShortedString')) {
     function del(id) {
         document.getElementById("lo").value = id;
     }
+
+    
 </script>
 
 <body>
@@ -403,14 +414,12 @@ if (!function_exists('getShortedString')) {
                         </div>
                         <div class="col-sm-6">
                             <form id="fecha" style="width: 600px; padding-right: 0px; display:inline-block">
-                                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" style="width: 33%; display:inline-block;">
+                                <input type="date" class="form-control" id="fecha_inicio" name="fecha_inicio" style="width: 33%; display:inline-block;" value="<?=$finicio?>">
                                 <span> Hasta </span>
-                                <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" style="width: 33%; display:inline-block;">
+                                <input type="date" name="fecha_fin" id="fecha_fin" class="form-control" style="width: 33%; display:inline-block;" value="<?= $ffin ?>">
                                 <button type="button" class="btn btn-success" name="Todo" onclick="window.location = 'Eventos.php';" value="Todo">Todo</button>
                                 <button class="btn btn-success" name="buscar" style="display: inline-block;" value="buscar">Buscar</button>
                             </form>
-                            <!--    <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Delete</span></a>						
-                                -->
                         </div>
                         <a href="#addEmployeeModal" class="btn btn-success" style="margin-left: 50px;" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar Incidente</span></a>
                     </div>
@@ -432,7 +441,7 @@ if (!function_exists('getShortedString')) {
                                 <th data-field="Afectó Procesos Criticos" data-editable="false">Afectó Procesos Criticos</th>
                                 <th data-field="Tiempo Interrupcion" data-editable="false">Tiempo Interrupcion</th>
                                 <th data-field="Tiempo Resolucion" data-editable="false">Tiempo Resolucion</th>
-                                <th data-field="Accion" data-editable="false">Accion</th>
+                                <th data-field="Accion" data-editable="false">Editar</th>
                             </tr>
                         </thead>
                         <tbody>
