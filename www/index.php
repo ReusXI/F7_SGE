@@ -61,7 +61,7 @@ if($sesionrol == null){
                 </div>
               </a>
             </div>
-            <div class="block"><a href="#" onclick="P.src= './pages/dashboards.php';" id="Users" style="background-color: white;" class="col button button-outline">
+            <div class="block"><a href="#" onclick="P.src= './pages/charts.php';" id="Users" style="background-color: white;" class="col button button-outline">
                 <div class="item-inner">
                   <div class="item-title">Graficos y Estadisticas</div>
                 </div>

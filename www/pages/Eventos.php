@@ -385,7 +385,7 @@ if(isset($_GET['buscar']) != null){
         document.getElementById("ef_incidente").value = f_incidente;
         document.getElementById("ef_deteccion").value = f_deteccion_incidente;
         document.getElementById("descripcion").value = descripcion_incidente;
-        document.getElementById("r_t_afectados").value = r_t_afectados;
+        document.getElementById("er_t_afectados").value = r_t_afectados;
         document.getElementById("ec_clasificacion1").value = codigo_clasificacion_1;
         document.getElementById("ec_clasificacion2").value = codigo_clasificacion_2;
         document.getElementById("economico").value = impacto_economico_estimado;
@@ -399,7 +399,17 @@ if(isset($_GET['buscar']) != null){
     function del(id) {
         document.getElementById("lo").value = id;
     }
+    function recursos(){
+    var x = document.getElementById('rt_afectado').value;
 
+    if(x == 'OTRO O VARIOS'){
+      document.getElementById('r_t_afectados').disabled = false;
+      document.getElementById('r_t_afectados').style.display = 'block';
+    }else{
+      document.getElementById('r_t_afectados').disabled = true;
+      document.getElementById('r_t_afectados').style.display = 'none';
+    }
+  }
     
 </script>
 
@@ -528,8 +538,34 @@ if(isset($_GET['buscar']) != null){
                         </div>
                         <div class="form-group">
                             <label>Recursos Tecnologicos Afectados</label>
-                            <textarea cols="40" rows="10" maxlength="1000" name="r_t_afectados" class="form-control" required></textarea>
+                            <select onchange="recursos();" name="rt_afectado" id="rt_afectado" class="form-control" required>
+                                <option>ACH</option>
+                                <option>Aplicativo Desarrollo Interno</option>
+                                <option>Aplicativos de Cobranza</option>
+                                <option>Banca Movil (Occidente Movil)</option>
+                                <option>Banca por Internet (Occidente@Linea)</option>
+                                <option>CAS (Call Center de Cobranzas)</option>
+                                <option>Cierres Diarios o Mensuales</option>
+                                <option>Compensacion Electronica</option>
+                                <option>Correo Electronico</option>
+                                <option>CRM</option>
+                                <option>DOCUWARE</option>
+                                <option>Gestion de datos e Informacion</option>
+                                <option>Interconexion Financiera</option>
+                                <option>INTERNET</option>
+                                <option>JTELLER</option>
+                                <option>LBTR</option>
+                                <option>Modulo en AS400</option>
+                                <option>QLIKSENSE</option>
+                                <option>REMESAS</option>
+                                <option>SIAFI</option>
+                                <option>Sistema de RRHH</option>
+                                <option>SWITCH Transaccional/ISONET</option>
+                                <option>YUMKAAX</option>
+                                <option>OTRO O VARIOS</option>
+                            </select>
                         </div>
+                        <textarea style="display: none;" id="r_t_afectados" cols="40" rows="10" maxlength="960" name="r_t_afectados" class="form-control" disabled="true" required></textarea>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel I)</label>
                             <select name="c_clasificacion1" id="c_clasificacion1" class="form-control" required>
@@ -629,7 +665,7 @@ if(isset($_GET['buscar']) != null){
                         </div>
                         <div class="form-group">
                             <label>Recursos Tecnologicos Afectados</label>
-                            <textarea cols="40" maxlength="1000" rows="10" id="r_t_afectados" name="r_t_afectados" class="form-control" required></textarea>
+                            <textarea cols="40" maxlength="1000" rows="10" id="er_t_afectados" name="r_t_afectados" class="form-control" required></textarea>
                         </div>
                         <div class="form-group">
                             <label>Codigo de Clasificacion (Nivel I)</label>
