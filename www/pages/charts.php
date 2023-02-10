@@ -28,9 +28,13 @@ endforeach;
             <h1>Numero de Incidentes por Taxonomia (Nivel II)</h1>
             <canvas id="myChart2"></canvas>
         </div>
-        <div style="float:left; height: 60vh; width:100%; padding-top:60px; display:block; margin:0 auto;">
+        <div style="float:left; position: relative; padding-top:70px; height: 60vh; width:40vw; padding-left:40px">
             <h1 style="text-align: center;">Impacto Economico por Incidente</h1>
             <canvas id="myChart3" style="width:100%"></canvas>
+        </div>
+        <div style="float:left; position: relative; padding-top:70px; height: 60vh; width:50vw;  padding-left:40px">
+            <h1 style="text-align: center;">Incidentes por fecha</h1>
+            <canvas id="myChart4" style="width:100%"></canvas>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -40,6 +44,7 @@ endforeach;
     const ctx = document.getElementById('myChart');
     const ctx1 = document.getElementById('myChart2');
     const ctx2 = document.getElementById('myChart3');
+    const ctx3 = document.getElementById('myChart4');
 
     new Chart(ctx, {
         type: 'pie',
@@ -78,11 +83,6 @@ endforeach;
             }]
         },
         options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
         }
     });
 
@@ -171,6 +171,51 @@ endforeach;
             scales: {
                 y: {
                     beginAtZero: false
+                }
+            }
+        }
+    });
+
+    new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: [
+                <?php
+                $sql_leer = "select f_incidente, count(*) from evento Group by f_incidente order by f_incidente;";
+                $gsent = $pdo->prepare($sql_leer);
+                $gsent->execute();
+                $resultado = $gsent->fetchAll();
+                foreach ($resultado as $dato) :
+                    echo "'" . $dato['f_incidente'] . "',";
+                endforeach
+                ?>
+            ],
+            datasets: [{
+                label: '# de Incidentes',
+                data: [
+                    <?php
+                    $sql_leer = "select f_incidente, count(*) as 'cantidad' from evento Group by f_incidente order by f_incidente;";
+                    $gsent = $pdo->prepare($sql_leer);
+                    $gsent->execute();
+                    $resultado = $gsent->fetchAll();
+                    foreach ($resultado as $dato) :
+                        echo "'" . $dato['cantidad'] . "',";
+                    endforeach;
+                    ?>
+                ],
+                backgroundColor: [
+                    'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
+                ],
+                borderColor: [
+                    'Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
                 }
             }
         }
