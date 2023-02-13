@@ -326,7 +326,7 @@ if(isset($_GET['buscar']) != null){
 
     /* Modal styles */
     .modal .modal-dialog {
-        max-width: 400px;
+        max-width: 800px;
     }
 
     .modal .modal-header,
