@@ -385,7 +385,7 @@ if ($sesionrol == null) {
                             <th data-field="Usuario" data-editable="false">Usuario</th>
                             <th data-field="Contraseña" data-editable="false">Contraseña</th>
                             <th data-field="Rol" data-editable="false">Rol</th>
-                            <th data-field="Estado" data-editable="false">Estado</th>
+                            <th data-field="Estado" data-editable="false">Administrador</th>
                             <th data-field="Accion" data-editable="false">Accion</th>
                         </tr>
                     </thead>
@@ -403,8 +403,8 @@ if ($sesionrol == null) {
                                 <td><?= $dato['Uss']; ?></td>
                                 <td><?= $dato['Pass']; ?></td>
                                 <td><?= $dato['rol']; ?></td>
-                                <td><?= $dato['Estado']; ?></td>
-                                <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['id']; ?>', '<?= $dato['Uss']; ?>', '<?= $dato['Pass']; ?>', '<?= $dato['rol']; ?>', '<?= $dato['Estado']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
+                                <td><?= $dato['admin']; ?></td>
+                                <td><a href="#editEmployeeModal" onclick="mod('<?= $dato['id']; ?>', '<?= $dato['Uss']; ?>', '<?= $dato['Pass']; ?>', '<?= $dato['rol']; ?>', '<?= $dato['admin']; ?>')" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Editar">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal" onclick="del('<?= $dato['id']; ?>')"><i class="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -437,6 +437,13 @@ if ($sesionrol == null) {
                             <select name="rol" class="form-control" required>
                                 <option>TECNOLOGIA</option>
                                 <option>SEGURIDAD</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>PERMISOS DE ADMINISTRADOR</label>
+                            <select name="estado" class="form-control" required>
+                                <option>No</option>
+                                <option>Si</option>
                             </select>
                         </div>
                         <input name="inp_guardar" value="45" type="hidden">
@@ -476,10 +483,10 @@ if ($sesionrol == null) {
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>ESTADO</label>
+                            <label>PERMISOS DE ADMINISTRADOR</label>
                             <select id="estadoE" name="estado" class="form-control" required>
-                                <option>ACTIVO</option>
-                                <option>INACTIVO</option>
+                                <option>No</option>
+                                <option>Si</option>
                             </select>
                         </div>
                         <input name="inp_editar" value="45" type="hidden">

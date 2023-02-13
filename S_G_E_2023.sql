@@ -52,7 +52,7 @@ CREATE TABLE `evento` (
 
 LOCK TABLES `evento` WRITE;
 /*!40000 ALTER TABLE `evento` DISABLE KEYS */;
-INSERT INTO `evento` VALUES ('INF-2023-001','IT','IT','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2023-02-02','2023-02-10','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base','02','04',1,'1','0',1,1,'Epinto','2023-02-02'),('INF-2023-002','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2023-02-07','2023-02-09','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base','02','05',0,'0','1',1,2,'Osman','2023-02-07'),('INF-2023-003','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2021-01-07','2023-02-16','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','01','05',0,'0','0',4,3,'Osman','2023-02-07'),('INF-2023-004','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2022-09-08','2023-02-07','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','01','07',0,'1','1',5,4,'Osman','2023-02-07'),('INF-2023-005','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2022-08-06','2023-02-07','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','02','05',0,'1','1',2,3,'Osman','2023-02-07');
+INSERT INTO `evento` VALUES ('INF-2023-001','IT','IT','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2023-02-02','2023-02-10','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base','REMESAS','02','04',6000,'1','0',1,1,'Epinto','2023-02-02'),('INF-2023-002','IT','IT','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2023-02-07','2023-02-09','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso recibimos el id de la localidad y consultamos en la base','CRM','02','05',4500,'0','1',1,2,'Osman','2023-02-07'),('INF-2023-003','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2021-01-07','2023-02-16','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','INTERNET','01','05',0,'0','0',4,3,'Osman','2023-02-07'),('INF-2023-004','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2022-09-08','2023-02-07','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','REMESAS','01','07',0,'1','1',5,4,'Osman','2023-02-07'),('INF-2023-005','IT','03','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','2022-08-06','2023-02-07','Después de tener el registro guardado en la base de datos posiblemente queremos modificarlo para eso','LBTR','02','05',0,'1','1',2,3,'Osman','2023-02-07'),('INF-2023-006','IT','03','La propiedad CSS display especifica si un elemento es tratado como block or inline element y el dise','2023-02-09','2023-02-17','La propiedad CSS display especifica si un elemento es tratado como block or inline element y el diseño usado por sus hijos, como flow layout(Diseño de Flujo), grid(Cuadricula) o flex(Flexible).','DOCUWARE','01','02',4500,'1','0',24,12,'Osman','2023-02-09'),('INF-2023-007','IT','IT','La propiedad CSS display especifica si un elemento es tratado como block or inline element y el dise','2023-02-09','2023-02-13','La propiedad CSS display especifica si un elemento es tratado como block or inline element y el diseño usado por sus hijos, como flow layout(Diseño de Flujo), grid(Cuadricula) o flex(Flexible).','REMESAS','01','04',6000,'0','0',12,6,'Osman','2023-02-09'),('INF-2023-008','IT','IT','CAIDA DEL SERVICIO DE LA BANCA','2023-02-09','2023-02-03','LA BANCA MOVIL SUFRIO UNA CAIDA DE 45 HORAS','Banca Movil (Occidente Movil)','01','03',12000,'0','0',45,24,'Osman','2023-02-09'),('INF-2023-009','IT','03','APAGON DE ENERGIA','2023-02-09','2023-02-09','APAGON ELECTRICO','INTERNET','01','07',0,'1','1',10,10,'Osman','2023-02-09');
 /*!40000 ALTER TABLE `evento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -125,7 +125,7 @@ CREATE TABLE `secuencia` (
 
 LOCK TABLES `secuencia` WRITE;
 /*!40000 ALTER TABLE `secuencia` DISABLE KEYS */;
-INSERT INTO `secuencia` VALUES (1,5,6);
+INSERT INTO `secuencia` VALUES (1,9,10);
 /*!40000 ALTER TABLE `secuencia` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -165,6 +165,7 @@ CREATE TABLE `taxonomia1` (
   `taxonomia` varchar(45) NOT NULL,
   `user` varchar(45) DEFAULT NULL,
   `codigo` int NOT NULL AUTO_INCREMENT,
+  `admin` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`codigo`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -175,7 +176,7 @@ CREATE TABLE `taxonomia1` (
 
 LOCK TABLES `taxonomia1` WRITE;
 /*!40000 ALTER TABLE `taxonomia1` DISABLE KEYS */;
-INSERT INTO `taxonomia1` VALUES ('01','Codigo Dañino','SEGURIDAD',1),('02','Disponibilidad','TECNOLOGIA',2),('02','Disponibilidad','SEGURIDAD',3);
+INSERT INTO `taxonomia1` VALUES ('01','Codigo Dañino','SEGURIDAD',1,'ADMINISTRADOR'),('02','Disponibilidad','TECNOLOGIA',2,'ADMINISTRADOR'),('02','Disponibilidad','SEGURIDAD',3,NULL);
 /*!40000 ALTER TABLE `taxonomia1` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -193,6 +194,7 @@ CREATE TABLE `taxonomia2` (
   `taxonomia2` varchar(45) NOT NULL,
   `usuario` varchar(45) DEFAULT NULL,
   `taxo` int DEFAULT NULL,
+  `admin` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -203,7 +205,7 @@ CREATE TABLE `taxonomia2` (
 
 LOCK TABLES `taxonomia2` WRITE;
 /*!40000 ALTER TABLE `taxonomia2` DISABLE KEYS */;
-INSERT INTO `taxonomia2` VALUES (1,'01','01','VIRUS','SEGURIDAD',1),(2,'01','02','GUSANOS','SEGURIDAD',1),(3,'01','03','TROYANOS','SEGURIDAD',1),(4,'01','04','SPYWARE','SEGURIDAD',1),(5,'01','05','ROOTKIT','SEGURIDAD',1),(6,'01','06','RAMSOMWARE','SEGURIDAD',1),(7,'01','07','BOTNET','SEGURIDAD',1),(8,'01','08','RAT(Herramientas de Acceso Remoto)','SEGURIDAD',1),(9,'02','01','DENEGACION DEL SERVICIO (DoS)/(DDoS)','SEGURIDAD',3),(10,'02','02','FALLO DE HARDWARE','TECNOLOGIA',2),(11,'02','03','FALLO DE SOFTWARE','TECNOLOGIA',2),(12,'02','04','ERROR HUMANO','TECNOLOGIA',2),(13,'02','05','SABOTAJE','SEGURIDAD',3);
+INSERT INTO `taxonomia2` VALUES (1,'01','01','VIRUS','SEGURIDAD',1,'ADMINISTRADOR'),(2,'01','02','GUSANOS','SEGURIDAD',1,'ADMINISTRADOR'),(3,'01','03','TROYANOS','SEGURIDAD',1,'ADMINISTRADOR'),(4,'01','04','SPYWARE','SEGURIDAD',1,'ADMINISTRADOR'),(5,'01','05','ROOTKIT','SEGURIDAD',1,'ADMINISTRADOR'),(6,'01','06','RAMSOMWARE','SEGURIDAD',1,'ADMINISTRADOR'),(7,'01','07','BOTNET','SEGURIDAD',1,'ADMINISTRADOR'),(8,'01','08','RAT(Herramientas de Acceso Remoto)','SEGURIDAD',1,'ADMINISTRADOR'),(9,'02','01','DENEGACION DEL SERVICIO (DoS)/(DDoS)','SEGURIDAD',3,'ADMINISTRADOR'),(10,'02','02','FALLO DE HARDWARE','TECNOLOGIA',2,'ADMINISTRADOR'),(11,'02','03','FALLO DE SOFTWARE','TECNOLOGIA',2,'ADMINISTRADOR'),(12,'02','04','ERROR HUMANO','TECNOLOGIA',2,'ADMINISTRADOR'),(13,'02','05','SABOTAJE','SEGURIDAD',3,'ADMINISTRADOR');
 /*!40000 ALTER TABLE `taxonomia2` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -246,9 +248,9 @@ CREATE TABLE `users` (
   `Uss` varchar(150) DEFAULT NULL,
   `Pass` varchar(150) DEFAULT NULL,
   `rol` varchar(50) DEFAULT NULL,
-  `Estado` varchar(50) DEFAULT NULL,
+  `admin` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -257,7 +259,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Osman','1234','SEGURIDAD','ACTIVO'),(2,'Epinto','4321','TECNOLOGIA','ACTIVO');
+INSERT INTO `users` VALUES (1,'Osman','1234','SEGURIDAD','Si'),(2,'Epinto','4321','TECNOLOGIA','Si');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -372,4 +374,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-02-08 14:09:37
+-- Dump completed on 2023-02-13 10:06:10

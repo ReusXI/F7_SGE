@@ -15,12 +15,18 @@ foreach ($resultado as $dato) :
         $_SESSION['User'] = htmlentities($Usser);
         $_SESSION['Password'] =htmlentities($Pass) ;
         $_SESSION['rol'] =htmlentities($dato['rol']);
+        $_SESSION['admin'] =htmlentities($dato['admin']);
         break;
     }
 endforeach;
 
 if($_SESSION['User'] != null && $_SESSION['Password'] != null){
-    header("Location:index.php");
+    if($_SESSION['admin'] == 'No'){
+        header("Location:index.php");
+    }else if($_SESSION['admin'] == 'Si'){
+        header("Location:index2.php");
+    }
+    
 }else{
     
     header("Location:Login.php?error=1");
