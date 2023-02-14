@@ -1,12 +1,13 @@
 <?php
-$file = fopen("ROPSSCI" . Date("Ymd") . ".txt", "w") or die("Unable to open file!");
+$path = "ROPSSCI" . Date("Ymd") . ".txt";
+$file = fopen($path, "w") or die("Unable to open file!");
 include_once 'conexion.php';
-$sql_leer = "SELECT * FROM Evento ORDER BY codigo_incidente DESC;";
+$sql_leer = "SELECT * FROM evento ORDER BY codigo_incidente DESC;";
 $gsent = $pdo->prepare($sql_leer);
 $gsent->execute();
 $resultado = $gsent->fetchAll();
 foreach ($resultado as $dato) :
-    $TEXTO = "Tipo de Institucion: ". $dato['t_institucion'] ."
+$TEXTO = "Tipo de Institucion: ". $dato['t_institucion'] ."
 Codigo de Institucion: ". $dato['c_institucion'] ."
 Fecha Reporte de Datos: ".  Date("Y-m-d") ."
 Codigo Incidente: ". $dato['codigo_incidente'] ."
@@ -28,18 +29,14 @@ Usuario: ". $dato['usuario'] ."
     fwrite($file, $TEXTO);
  endforeach;
 
-fclose($file);
+ fclose($file);
 
 header('Content-Description: File Transfer');
-header('Content-Type: application/octet-stream');
-header('Content-Disposition: attachment; filename="ROPSSCI' . Date("Ymd") . '.txt"');
-header('Content-Transfer-Encoding: binary');
+header('Content-Disposition: attachment; filename='.basename($path));
 header('Expires: 0');
-header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+header('Cache-Control: must-revalidate');
 header('Pragma: public');
-header('Content-Length: test.txt');
-ob_clean();
-flush();
-readfile('ROPSSCI' . Date("Ymd") . '.txt');
-exit();
+header('Content-Length: ' . filesize($path));
+header("Content-Type: text/plain");
+readfile($path);
 ?>

@@ -44,7 +44,7 @@ if($sesionrol == null){
         <div class="page">
           <div class="navbar">
             <div class="navbar-bg"></div>
-            <div onclick="window.location = 'index.php';" class="navbar-inner">
+            <div onclick="window.location = 'index2.php';" class="navbar-inner">
               <div class="title">INICIO</div>
             </div>
           </div>

@@ -13,8 +13,8 @@ if ($sesionrol == null) {
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Administracion en tabla</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="/www/table/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/www/table/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -526,10 +526,10 @@ if ($sesionrol == null) {
 
     <!-- jquery
                     ============================================ -->
-    <script src="/www/table/js/vendor/jquery-1.11.3.min.js"></script>
+    <script src="./js/vendor/jquery-1.11.3.min.js"></script>
     <!-- bootstrap JS
                     ============================================ -->
-    <script src="/www/table/js/bootstrap.min.js">
+    <script src="./js/bootstrap.min.js">
         function selectedRow() {
             var index, table = document.getElementById("table");
 
@@ -545,23 +545,23 @@ if ($sesionrol == null) {
 
     <!-- data table JS
                     ============================================ -->
-    <script src="/www/table/js/data-table/bootstrap-table.js"></script>
-    <script src="/www/table/js/modal.js"></script>
-    <script src="/www/table/js/data-table/tableExport.js"></script>
-    <script src="/www/table/js/data-table/data-table-active.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-table-editable.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-editable.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-table-resizable.js"></script>
-    <script src="/www/table/js/data-table/colResizable-1.5.source.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-table-export.js"></script>
+    <script src="./js/data-table/bootstrap-table.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/data-table/tableExport.js"></script>
+    <script src="./js/data-table/data-table-active.js"></script>
+    <script src="./js/data-table/bootstrap-table-editable.js"></script>
+    <script src="./js/data-table/bootstrap-editable.js"></script>
+    <script src="./js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="./js/data-table/colResizable-1.5.source.js"></script>
+    <script src="./js/data-table/bootstrap-table-export.js"></script>
 
     <!-- tab JS
                     ============================================ -->
-    <script src="/www//table/js/tab.js"></script>
+    <script src="./js/tab.js"></script>
     <script src="../assets/plugins/SweetAlert/dist/sweetalert2.min.js"></script>
     <script src="../assets/plugins/SweetAlert/dist/sweetalert2.css"></script>
-    <script src="../table/js/jquery-3.6.0.min.js"></script>
-    <script src="../table/js/materialize.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/materialize.min.js"></script>
 
 </body>
 

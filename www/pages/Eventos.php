@@ -8,7 +8,7 @@ if ($sesionrol == null) {
     header('Location: Login.php');
 }
 
-
+$Rolex = $_SESSION['rol'];
 ?>
 <?php
 if (!function_exists('getShortedString')) {
@@ -39,8 +39,8 @@ if(isset($_GET['buscar']) != null){
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Administracion en tabla</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-    <link rel="stylesheet" href="/www/table/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/www/table/css/data-table/bootstrap-table.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/data-table/bootstrap-table.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -457,9 +457,9 @@ if(isset($_GET['buscar']) != null){
                         <tbody>
                             <?php
                             include_once 'conexion.php';
-                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
+                            $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,A.codigo_clasificacion_1,A.codigo_clasificacion_2,A.afecto_procesos_criticos,A.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E Where A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC;";
                             if (isset($_GET['fecha_inicio']) != null) {
-                                $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,a.codigo_clasificacion_1,a.codigo_clasificacion_2,a.afecto_procesos_criticos,a.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
+                                $sql_leer = "SELECT A.t_institucion,A.c_institucion,A.codigo_incidente,A.asunto,A.f_incidente,A.f_deteccion_incidente,A.descripcion_incidente,A.r_t_afectados,D.taxonomia,E.taxonomia2,A.impacto_economico_estimado, B.opcion AS 'daño', C.opcion as 'criticos',A.tiempo_interrupcion,A.tiempo_resolucion_incidente,A.usuario,A.fecha_registro,A.codigo_clasificacion_1,A.codigo_clasificacion_2,A.afecto_procesos_criticos,A.daño_reputacional FROM evento A, opciones B, opciones2 C, taxonomia1 D, taxonomia2 E WHERE f_incidente BETWEEN '" . $_GET['fecha_inicio'] . "' AND '" . $_GET['fecha_fin'] . "' AND A.daño_reputacional = B.id  and A.afecto_procesos_criticos = C.id  and A.codigo_clasificacion_1 = D.id and A.codigo_clasificacion_2 = E.codigo and E.taxonomia1 = D.codigo and E.taxonomia1 = D.id ORDER BY A.codigo_incidente DESC";
                             }
 
                             $gsent = $pdo->prepare($sql_leer);
@@ -673,7 +673,7 @@ if(isset($_GET['buscar']) != null){
                                 <option value="">----SELECCIONE UNA OPCION----</option>
                                 <?php
                                 include_once 'conexion.php';
-                                $sql_leer = "SELECT * FROM taxonomia1;";
+                                $sql_leer = "SELECT * FROM taxonomia1 WHERE user = '$Rolex';";
                                 $gsent = $pdo->prepare($sql_leer);
                                 $gsent->execute();
                                 $resultado = $gsent->fetchAll();
@@ -778,10 +778,10 @@ if(isset($_GET['buscar']) != null){
 
     <!-- jquery
                     ============================================ -->
-    <script src="/www/table/js/vendor/jquery-1.11.3.min.js"></script>
+    <script src="./js/vendor/jquery-1.11.3.min.js"></script>
     <!-- bootstrap JS
                     ============================================ -->
-    <script src="/www/table/js/bootstrap.min.js">
+    <script src="./js/bootstrap.min.js">
         function selectedRow() {
             var index, table = document.getElementById("table");
             for (var i = 0; i < table.rows.length; i++) {
@@ -796,23 +796,23 @@ if(isset($_GET['buscar']) != null){
 
     <!-- data table JS
                     ============================================ -->
-    <script src="/www/table/js/data-table/bootstrap-table.js"></script>
-    <script src="/www/table/js/modal.js"></script>
-    <script src="/www/table/js/data-table/tableExport.js"></script>
-    <script src="/www/table/js/data-table/data-table-active.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-table-editable.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-editable.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-table-resizable.js"></script>
-    <script src="/www/table/js/data-table/colResizable-1.5.source.js"></script>
-    <script src="/www/table/js/data-table/bootstrap-table-export.js"></script>
+    <script src="./js/data-table/bootstrap-table.js"></script>
+    <script src="./js/modal.js"></script>
+    <script src="./js/data-table/tableExport.js"></script>
+    <script src="./js/data-table/data-table-active.js"></script>
+    <script src="./js/data-table/bootstrap-table-editable.js"></script>
+    <script src="./js/data-table/bootstrap-editable.js"></script>
+    <script src="./js/data-table/bootstrap-table-resizable.js"></script>
+    <script src="./js/data-table/colResizable-1.5.source.js"></script>
+    <script src="./js/data-table/bootstrap-table-export.js"></script>
 
     <!-- tab JS
                     ============================================ -->
-    <script src="/www//table/js/tab.js"></script>
+    <script src="./js/tab.js"></script>
     <script src="../assets/plugins/SweetAlert/dist/sweetalert2.min.js"></script>
     <script src="../assets/plugins/SweetAlert/dist/sweetalert2.css"></script>
-    <script src="../table/js/jquery-3.6.0.min.js"></script>
-    <script src="../table/js/materialize.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
+    <script src="./js/materialize.min.js"></script>
 
 </body>
 
@@ -906,7 +906,7 @@ if(isset($_GET['buscar']) != null){
             });
         })
     });
-    $(document).ready(function() {
+   $(document).ready(function() {
         $("#ec_clasificacion1").change(function() {
             $("#ec_clasificacion1 option:selected").each(function() {
                 id_estado = $(this).val();

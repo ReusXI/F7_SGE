@@ -1,0 +1,20 @@
+Tipo de Institucion: IT
+Codigo de Institucion: 03
+Fecha Reporte de Datos: 2023-02-14
+Codigo Incidente: INF-2023-010
+Asunto: ATAQUE DE DENEGACION
+Fecha del Incidente: 2023-02-14
+Fecha de Deteccion del Incidente: 2023-02-16
+Descripcion del Incidente: FALLO EN LA PAGINA WEB DE LA EMPRESA
+Recursos Tecnologicos Afectados: Banca por Internet (Occidente@Linea)
+Codigo de Clasificacion(Nivel I): 02
+Codigo de Clasificacion(Nivel II): 01
+Impacto Economico Estimado: 0
+Daño Reputacional: 0
+Afecto Procesos Criticos: 0
+Tiempo Interrupcion: 3
+Tiempo Resolucion: 3
+Fecha de Registro: 2023-02-14
+Usuario: Osman
+    
+

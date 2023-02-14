@@ -29,7 +29,7 @@ header("Content-Disposition: attachment; filename= ROPSSCI" . Date("Ymd") . ".xl
     <tbody>
         <?php
         include_once 'conexion.php';
-        $sql_leer = "SELECT * FROM Evento ORDER BY codigo_incidente DESC;";
+        $sql_leer = "SELECT * FROM evento ORDER BY codigo_incidente DESC;";
         $gsent = $pdo->prepare($sql_leer);
         $gsent->execute();
         $resultado = $gsent->fetchAll();
