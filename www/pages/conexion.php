@@ -1,7 +1,7 @@
 <?php
-$link = 'mysql:host=172.16.102.45;dbname=sg_e_2023';
-$usuario = 'SGE';
-$pass = 'Occidente2023';
+$link = 'mysql:host=localhost;dbname=sg_e_2023';
+$usuario = 'root';
+$pass = '1234';
 
 try{
 
